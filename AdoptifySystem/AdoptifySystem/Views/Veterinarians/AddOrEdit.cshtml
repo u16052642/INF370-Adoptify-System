@@ -1,0 +1,32 @@
+﻿@model AdoptifySystem.Veterinarian
+@{
+    Layout = null;
+}
+
+@using (Html.BeginForm("AddOrEdit", "Veterinarians", FormMethod.Post, new { onsubmit = "return SubmitForm(this)" }))
+{
+    @Html.HiddenFor(model => model.Vet_ID)
+    <div class="form-group">
+        @Html.LabelFor(model => model.Vet_Name, new { @class = "control-label" })
+        @Html.EditorFor(model => model.Vet_Name, new { htmlAttributes = new { @class = "form-control" } })
+        @Html.ValidationMessageFor(model => model.Vet_Name)
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(model => model.Vet_Emial, new { @class = "control-label" })
+        @Html.EditorFor(model => model.Vet_Emial, new { htmlAttributes = new { @class = "form-control" } })
+        @Html.ValidationMessageFor(model => model.Vet_Emial)
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(model => model.Vet_Tel, new { @class = "control-label" })
+        @Html.EditorFor(model => model.Vet_Tel, new { htmlAttributes = new { @class = "form-control" } })
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(model => model.Vet_Address, new { @class = "control-label" })
+        @Html.EditorFor(model => model.Vet_Address, new { htmlAttributes = new { @class = "form-control" } })
+    </div>
+    
+    <div class="form-group">
+        <input type="submit" value="Submit" class="btn btn-primary" />
+        <input type="reset" value="Reset" class="btn" />
+    </div>
+}
