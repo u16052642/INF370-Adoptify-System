@@ -9,7 +9,23 @@ namespace AdoptifySystem.Controllers
     public class FosterCareController : Controller
     {
         // GET: FosterCare
-        public ActionResult Index()
+        public ActionResult AddFosterCareParent()
+        {
+            return View();
+        }
+        public ActionResult MaintainFosterCareParent()
+        {
+            return View();
+        }
+        public ActionResult SearchFosterCareParent()
+        {
+            return View();
+        }
+        public ActionResult AddtoFosterCare()
+        {
+            return View();
+        }
+        public ActionResult RemovefromFosterCare()
         {
             return View();
         }

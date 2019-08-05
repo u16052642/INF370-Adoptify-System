@@ -611,12 +611,36 @@
     <Content Include="Views\Veterinarians\AddOrEdit.cshtml" />
     <Content Include="Views\Veterinarians\Index.cshtml" />
     <Content Include="Views\Donations\AddDonation.cshtml" />
+    <Content Include="Views\Donations\AddDonor.cshtml" />
+    <Content Include="Views\Donations\MaintainDonor.cshtml" />
+    <Content Include="Views\Donations\SearchDonor.cshtml" />
+    <Content Include="Views\Donations\SearchDonation.cshtml" />
+    <Content Include="Views\Donations\AddDonationType.cshtml" />
+    <Content Include="Views\Donations\MaintainDonationType.cshtml" />
+    <Content Include="Views\Donations\SearchDonationType.cshtml" />
+    <Content Include="Views\Admin\ResetPassword.cshtml" />
+    <Content Include="Views\Admin\Checkin.cshtml" />
+    <Content Include="Views\Admin\Checkout.cshtml" />
+    <Content Include="Views\Admin\ChangePassword.cshtml" />
+    <Content Include="Views\Admin\AddUserRole.cshtml" />
+    <Content Include="Views\Admin\SearchUserRole.cshtml" />
+    <Content Include="Views\Admin\MaintainUserRole.cshtml" />
+    <Content Include="Views\FosterCare\AddFosterCareParent.cshtml" />
+    <Content Include="Views\FosterCare\MaintainFosterCareParent.cshtml" />
+    <Content Include="Views\FosterCare\SearchFosterCareParent.cshtml" />
+    <Content Include="Views\FosterCare\AddtoFosterCare.cshtml" />
+    <Content Include="Views\FosterCare\RemovefromFosterCare.cshtml" />
+    <Content Include="Views\Stock\AddStock.cshtml" />
+    <Content Include="Views\Stock\SearchStock.cshtml" />
+    <Content Include="Views\Stock\MaintainStock.cshtml" />
+    <Content Include="Views\Stock\CaptureStockTake.cshtml" />
+    <Content Include="Views\Stock\AddStockType.cshtml" />
+    <Content Include="Views\Stock\SearchStockType.cshtml" />
+    <Content Include="Views\Stock\MaintainStockType.cshtml" />
+    <Content Include="Views\Stock\ReceiveStock.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\Admin\" />
-    <Folder Include="Views\FosterCare\" />
-    <Folder Include="Views\Stock\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
