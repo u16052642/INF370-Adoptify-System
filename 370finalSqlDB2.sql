@@ -1,12 +1,12 @@
 USE [master]
 GO
 /****** Object:  Database [Wollies_Shelter]    Script Date: 2019/08/03 23:29:23 ******/
-CREATE DATABASE [Wollies_Shelter]
+CREATE DATABASE Wollies_Shelter
  CONTAINMENT = NONE
  ON  PRIMARY 
-( NAME = N'Wollies_Shelter', FILENAME = N'C:\Program Files\Microsoft SQL Server\MSSQL11.MSSQLSERVER\MSSQL\DATA\Wollies_Shelter.mdf' , SIZE = 3136KB , MAXSIZE = UNLIMITED, FILEGROWTH = 1024KB )
+( NAME = N'Wollies_Shelter', FILENAME = N'C:\Program Files\Microsoft SQL Server\MSSQL12.YUKIHIRA\MSSQL\DATA\Wollies_Shelter.mdf' , SIZE = 3136KB , MAXSIZE = UNLIMITED, FILEGROWTH = 1024KB )
  LOG ON 
-( NAME = N'Wollies_Shelter_log', FILENAME = N'C:\Program Files\Microsoft SQL Server\MSSQL11.MSSQLSERVER\MSSQL\DATA\Wollies_Shelter_log.ldf' , SIZE = 784KB , MAXSIZE = 2048GB , FILEGROWTH = 10%)
+( NAME = N'Wollies_Shelter_log', FILENAME = N'C:\Program Files\Microsoft SQL Server\MSSQL12.YUKIHIRA\MSSQL\DATA\Wollies_Shelter_log.ldf' , SIZE = 784KB , MAXSIZE = 2048GB , FILEGROWTH = 10%)
 GO
 ALTER DATABASE [Wollies_Shelter] SET COMPATIBILITY_LEVEL = 110
 GO
