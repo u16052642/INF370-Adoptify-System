@@ -13,16 +13,16 @@
                 <h4 class="modal-title"><span id="eventTitle"></span></h4>
             </div>
             <div class="modal-body">
-                <button id="btnDelete" class="btn btn-default btn-sm pull-right">
-                    <span class="glyphicon glyphicon-remove"></span> Remove
+                <button id="btnDelete" class="btn btn-danger btn-sm pull-right">
+                    <span class="glyphicon glyphicon-trash"></span> Remove
                 </button>
-                <button id="btnEdit" class="btn btn-default btn-sm pull-right" style="margin-right:5px;">
+                <button id="btnEdit" class="btn btn-warning btn-sm pull-right" style="margin-right:5px;">
                     <span class="glyphicon glyphicon-pencil"></span> Edit
                 </button>
                 <p id="pDetails"></p>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
             </div>
         </div>
     </div>
@@ -33,7 +33,7 @@
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal">&times;</button>
-                <h4 class="modal-title">Save Event</h4>
+                <h4 class="modal-title">Add Events to Schedule</h4>
             </div>
             <div class="modal-body">
                 <form class="form-horizontal">
@@ -75,12 +75,12 @@
                             <option value="">Default</option>
                             <option value="red">Red-</option>
                             <option value="blue">Blue-Events</option>
-                            <option value="green">Green-HomeCheck</option>
+                            <option value="orange">Orange-HomeCheck</option>
                             <option value="black">Black-Other</option>
                         </select>
                     </div>
                     <button type="button" id="btnSave" class="btn btn-success">Save</button>
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
                 </form>
             </div>
         </div>
@@ -105,7 +105,7 @@
                 events = [];
                 $.ajax({
                     type: "GET",
-                    url: "/home/GetEvents",
+                    url: "/Home/GetEvents",
                     success: function (data) {
                         $.each(data, function (i, v) {
                             events.push({
@@ -186,16 +186,16 @@
 
             $('#btnEdit').click(function () {
                 //Open modal dialog for edit event
-                openAddEditForm();
+                   openAddEditForm();
             })
             $('#btnDelete').click(function () {
                 if (selectedEvent != null && confirm('Are you sure?')) {
                     $.ajax({
                         type: "POST",
-                        url: '/home/DeleteEvent',
+                        url: '/Home/DeleteEvent',
                         data: { 'eventID': selectedEvent.eventID },
                         success: function (data) {
-                            if (data.status) {
+                            if (data.status) {//staus is true
                                 //Refresh the calender
                                 FetchEventAndRenderCalendar();
                                 $('#myModal').modal('hide');
@@ -203,12 +203,13 @@
                         },
                         //Error message
                         error: function () {
-                            alert('Failed');
+                            alert('Delete Failed');
                         }
                     })
                 }
             })
 
+            //Datetime picker
             $('#dtp1,#dtp2').datetimepicker({
                 format: 'DD/MM/YYYY HH:mm A'
             });
@@ -255,7 +256,7 @@
                     var startDate = moment($('#txtStart').val(), "DD/MM/YYYY HH:mm A").toDate();
                     var endDate = moment($('#txtEnd').val(), "DD/MM/YYYY HH:mm A").toDate();
                     if (startDate > endDate) {
-                        alert('Invalid end date');
+                        alert('Invalid End date');
                         return;
                     }
                 }
@@ -276,7 +277,7 @@
             function SaveEvent(data) {
                 $.ajax({
                     type: "POST",
-                    url: '/home/SaveEvent',
+                    url: '/Home/SaveEvent',
                     data: data,
                     success: function (data) {
                         if (data.status) {

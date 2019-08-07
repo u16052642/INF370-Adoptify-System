@@ -46,17 +46,17 @@ namespace AdoptifySystem.Controllers
                         v.IsFullDay = e.IsFullDay;
                         v.ThemeColour = e.ThemeColour;
                     }
+                    
                 }
-                else
+                else //Add Event
                 {
                     dc.Event_Schedule.Add(e);
+                    
                 }
-                
-                    dc.SaveChanges();
-               
-               
-                    status = true;
-                
+
+                dc.SaveChanges();
+                status = true;
+
             }
             return new JsonResult { Data = new { status = status } };
         }
