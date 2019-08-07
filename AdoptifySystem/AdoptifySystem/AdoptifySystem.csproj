@@ -187,12 +187,8 @@
     <Compile Include="Controllers\Nickey\DonationsController.cs" />
     <Compile Include="Controllers\Nickey\FosterCareController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
-
     <Compile Include="Controllers\VeterinarianController.cs" />
-
     <Compile Include="Controllers\Nickey\StockController.cs" />
-    <Compile Include="Controllers\VeterinariansController.cs" />
-   
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -244,11 +240,9 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
-    
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
-
     <None Include="Scripts\jquery.validate-vsdoc.js" />
     <Content Include="Scripts\jquery-ui-1.11.4.js" />
     <Content Include="Scripts\jquery-ui-1.11.4.min.js" />
@@ -304,7 +298,6 @@
     <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
-
     <Content Include="Scripts\umd\popper.min.js.map" />
     <Content Include="Scripts\umd\popper.js.map" />
     <Content Include="Scripts\umd\popper-utils.min.js.map" />
@@ -315,7 +308,6 @@
     <Content Include="Scripts\popper-utils.min.js.map" />
     <Content Include="Scripts\popper-utils.js.map" />
     <Content Include="Views\Veterinarian\Index.cshtml" />
-
     <Content Include="Views\Veterinarians\AddOrEdit.cshtml" />
     <Content Include="Views\Veterinarians\Index.cshtml" />
     <Content Include="Views\Donations\AddDonation.cshtml" />
@@ -346,7 +338,7 @@
     <Content Include="Views\Stock\SearchStockType.cshtml" />
     <Content Include="Views\Stock\MaintainStockType.cshtml" />
     <Content Include="Views\Stock\ReceiveStock.cshtml" />
-	 <Content Include="Views\Admin\Login.cshtml" />
+    <Content Include="Views\Admin\Login.cshtml" />
     <Content Include="Views\Admin\Authorize.cshtml" />
   </ItemGroup>
   <ItemGroup>
