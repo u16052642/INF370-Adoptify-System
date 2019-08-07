@@ -226,12 +226,12 @@
     <Compile Include="Controllers\Nickey\DonationsController.cs" />
     <Compile Include="Controllers\Nickey\FosterCareController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
-<<<<<<< HEAD
+
     <Compile Include="Controllers\VeterinarianController.cs" />
-=======
+
     <Compile Include="Controllers\Nickey\StockController.cs" />
     <Compile Include="Controllers\VeterinariansController.cs" />
->>>>>>> d10ba94c68db498ace4310638f1e253a6f00fc14
+
     <Compile Include="CrossBreed.cs">
       <DependentUpon>MyModel.tt</DependentUpon>
     </Compile>
@@ -592,7 +592,7 @@
     <Content Include="MyModel.edmx.diagram">
       <DependentUpon>MyModel.edmx</DependentUpon>
     </Content>
-<<<<<<< HEAD
+
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\esm\popper-utils.js" />
@@ -619,7 +619,7 @@
     <Content Include="Scripts\jquery-3.4.1.slim.min.js" />
     <Content Include="Scripts\jquery-3.4.1.slim.min.map" />
     <Content Include="Scripts\jquery-3.4.1.min.map" />
-=======
+
     <EntityDeploy Include="Models\Model1.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>Model1.Designer.cs</LastGenOutput>
@@ -630,7 +630,7 @@
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
->>>>>>> d10ba94c68db498ace4310638f1e253a6f00fc14
+
     <None Include="Scripts\jquery.validate-vsdoc.js" />
     <Content Include="Scripts\jquery-ui-1.11.4.js" />
     <Content Include="Scripts\jquery-ui-1.11.4.min.js" />
@@ -686,7 +686,7 @@
     <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
-<<<<<<< HEAD
+
     <Content Include="Scripts\umd\popper.min.js.map" />
     <Content Include="Scripts\umd\popper.js.map" />
     <Content Include="Scripts\umd\popper-utils.min.js.map" />
@@ -697,7 +697,7 @@
     <Content Include="Scripts\popper-utils.min.js.map" />
     <Content Include="Scripts\popper-utils.js.map" />
     <Content Include="Views\Veterinarian\Index.cshtml" />
-=======
+
     <Content Include="Views\Veterinarians\AddOrEdit.cshtml" />
     <Content Include="Views\Veterinarians\Index.cshtml" />
     <Content Include="Views\Donations\AddDonation.cshtml" />
@@ -728,7 +728,7 @@
     <Content Include="Views\Stock\SearchStockType.cshtml" />
     <Content Include="Views\Stock\MaintainStockType.cshtml" />
     <Content Include="Views\Stock\ReceiveStock.cshtml" />
->>>>>>> d10ba94c68db498ace4310638f1e253a6f00fc14
+
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -737,9 +737,9 @@
     <Content Include="packages.config" />
     <None Include="Project_Readme.html" />
   </ItemGroup>
-  <ItemGroup>
+  <!--<ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
-  </ItemGroup>
+  </ItemGroup>-->
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
