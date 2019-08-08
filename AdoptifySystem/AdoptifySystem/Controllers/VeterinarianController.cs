@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using AdoptifySystem;
+using AdoptifySystem.Models;
 
 namespace AdoptifySystem.Controllers
 {
@@ -19,7 +20,7 @@ namespace AdoptifySystem.Controllers
         [HttpGet]
         public ActionResult GetVeterinarians()
         {
-            using (Wollies_ShelterEntities dc = new Wollies_ShelterEntities())
+            using (Wollies_ShelterEntities1 dc = new Wollies_ShelterEntities1())
             {
                 var veterinarians = dc.Veterinarians.OrderBy(a => a.Vet_Name).ToList();
                 return Json(new { data = veterinarians }, JsonRequestBehavior.AllowGet);
