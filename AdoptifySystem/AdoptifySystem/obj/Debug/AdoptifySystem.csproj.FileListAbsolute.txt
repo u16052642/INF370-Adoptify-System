@@ -151,3 +151,4 @@ C:\Users\Nickey\Desktop\370\INF370-Adoptify-System\AdoptifySystem\AdoptifySystem
 C:\Users\Nickey\Desktop\370\INF370-Adoptify-System\AdoptifySystem\AdoptifySystem\obj\Debug\AdoptifySystem.dll
 C:\Users\Nickey\Desktop\370\INF370-Adoptify-System\AdoptifySystem\AdoptifySystem\obj\Debug\AdoptifySystem.pdb
 C:\Users\Nickey\Desktop\370\INF370-Adoptify-System\AdoptifySystem\AdoptifySystem\bin\Google.Authenticator.dll
+C:\Users\Divin\Desktop\School 2019\INF 370\Adoptify System Program\INF370-Adoptify System final (del5)\AdoptifySystem\AdoptifySystem\bin\Google.Authenticator.dll
