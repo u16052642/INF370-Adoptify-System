@@ -1,21 +1,24 @@
 ﻿@model AdoptifySystem.Models.User_
-
-<div class="login">
-    <h1>Login</h1>
-    @using (Html.BeginForm())
-    {
-        <div>@ViewBag.Message</div>
-        <div class="form-group">
-            <label for="Username">Username : </label>
-            @Html.TextBoxFor(a => a.Username, new { @class = "form-control textbox" })
-        </div>
-        <div class="form-group">
-            <label for="Password">Password : </label>
-            @Html.TextBoxFor(a => a.Password, new { @class = "form-control textbox", type = "password" })
-        </div>
-        <input type="submit" value="Login" class="btn btn-primary btn-block btn-large" />
-    }
-</div>
+@{ 
+      Layout = "~/Views/Shared/_Layout.cshtml";
+}
+    <div class="login">
+        <h1>Login</h1>
+        @using (Html.BeginForm())
+        {
+            <div>@ViewBag.Message</div>
+            <div class="form-group">
+                <label for="Username">Username : </label>
+                @Html.TextBoxFor(a => a.Username, new { @class = "form-control textbox" })
+            </div>
+            <div class="form-group">
+                <label for="Password">Password : </label>
+                @Html.TextBoxFor(a => a.Password, new { @class = "form-control textbox", type = "password" })
+            </div>
+            <a>@Html.ActionLink("Forgot Password","ResetPassword","Admin")</a>
+            <input type="submit" value="Login" class="btn btn-primary btn-block btn-large" />
+        }
+    </div>
 
 <style>
     @@import url(https://fonts.googleapis.com/css?family=Open+Sans);
@@ -126,8 +129,12 @@
         height: 100%;
         overflow: hidden;
     }
-
-    body {
+  .login {
+  border: 1px solid;
+  padding: 10px;
+  box-shadow: 5px 10px #888888;
+}
+    .login {
         width: 100%;
         height: 100%;
         font-family: 'Open Sans', sans-serif;

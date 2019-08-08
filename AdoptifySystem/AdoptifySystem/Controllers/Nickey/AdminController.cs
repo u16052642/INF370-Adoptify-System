@@ -14,6 +14,9 @@ namespace AdoptifySystem.Controllers
         private const string key = "qaz123!@@)(*";//this needs to be generated for each person so that it is unique barcode
         /* any 10-12 char string for use as private key in google authenticator
         use later for generate Google authenticator code.*/
+
+        //this is the Db that i will be unstatnitatiung to use thought the whole controller
+        Wollies_ShelterEntities1 db = new Wollies_ShelterEntities1();
         public ActionResult Login()
         {
             return View();
@@ -95,7 +98,7 @@ namespace AdoptifySystem.Controllers
         }
         public ActionResult Logout()
         {
-            return View();
+            return Redirect("Login");
         }
         public ActionResult ResetPassword()
         {
@@ -119,9 +122,51 @@ namespace AdoptifySystem.Controllers
         {
             return View();
         }
+        [HttpPost]
+        public ActionResult AddUserRole(Role_ role)
+        {
+            //These variables are here to direct person depending on where they have to go
+            string controllername = "";
+            string actionname = "";
+
+            //first check if its in similar data on the database
+            try
+            {
+                int counter = 0;
+                //Role_ dummy = new Role_();
+                //dummy.Role_Name = "manager";
+                //db.Role_.Add(dummy);
+                //db.SaveChanges();
+                var roles = db.Role_.ToList();
+                foreach (var item in roles)
+                {
+                    if (item.Role_Name == role.Role_Name)
+                    {
+                        controllername = "Admin";
+                        actionname = "AddUserRole";
+                        ViewBag.errormessage = "There is a duplicate";
+                        counter++;
+                    }
+
+                }
+                if (counter <= 1)
+                {
+                    return RedirectToAction(actionname, controllername);
+                }
+            }
+            catch
+            {
+                return RedirectToAction("Error", "ErrorController");
+            }
+            return RedirectToAction(actionname, controllername);
+        }
+
         public ActionResult SearchUserRole()
         {
+
+
             return View();
+
         }
         public ActionResult MaintainUserRole()
         {
