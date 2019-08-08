@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using Google.Authenticator;
+using AdoptifySystem.Models;
 
 namespace AdoptifySystem.Controllers
 {
@@ -22,7 +23,7 @@ namespace AdoptifySystem.Controllers
         {
             
             bool status = false;
-            Wollies_ShelterEntities db = new Wollies_ShelterEntities();
+            Wollies_ShelterEntities1 db = new Wollies_ShelterEntities1();
             //check username and password form our database here
             //for demo I am going to use Admin as Username and Password1 as Password static value
             List<User_> Users;
@@ -88,9 +89,9 @@ namespace AdoptifySystem.Controllers
             if (isValid)
             {
                 Session["IsValid2FA"] = true;
-                return RedirectToAction("MyProfile", "Login");
+                return RedirectToAction("Index", "Home");
             }
-            return RedirectToAction("Login", "Login");
+            return RedirectToAction("Login", "Admin");
         }
         public ActionResult Logout()
         {
