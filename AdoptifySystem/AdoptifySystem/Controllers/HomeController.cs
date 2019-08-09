@@ -5,8 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using System.Data.Entity;
 using AdoptifySystem;
-
-
+using AdoptifySystem.Models;
 
 namespace AdoptifySystem.Controllers
 {
@@ -20,7 +19,7 @@ namespace AdoptifySystem.Controllers
 
         public JsonResult GetEvents()
         {
-            using (Wollies_ShelterEntities dc = new Wollies_ShelterEntities())
+            using (Wollies_ShelterEntities1 dc = new Wollies_ShelterEntities1())
             {
                 var events = dc.Event_Schedule.ToList();
                 return new JsonResult { Data = events, JsonRequestBehavior = JsonRequestBehavior.AllowGet };
@@ -31,7 +30,7 @@ namespace AdoptifySystem.Controllers
         public JsonResult SaveEvent(Event_Schedule e)
         {
             var status = false;
-            using (Wollies_ShelterEntities dc = new Wollies_ShelterEntities())
+            using (Wollies_ShelterEntities1 dc = new Wollies_ShelterEntities1())
             {
                 if (e.EventID > 0)
                 {
@@ -64,7 +63,7 @@ namespace AdoptifySystem.Controllers
         public JsonResult DeleteEvent(int eventID)
         {
             var status = false;
-            using (Wollies_ShelterEntities dc = new Wollies_ShelterEntities())
+            using (Wollies_ShelterEntities1 dc = new Wollies_ShelterEntities1())
             {
                 var v = dc.Event_Schedule.Where(a => a.EventID == eventID).FirstOrDefault();
                 if (v != null)

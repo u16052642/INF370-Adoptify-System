@@ -24,6 +24,7 @@ namespace AdoptifySystem.Controllers
             
             bool status = false;
             Wollies_ShelterEntities1 db = new Wollies_ShelterEntities1();
+
             //check username and password form our database here
             //for demo I am going to use Admin as Username and Password1 as Password static value
             List<User_> Users;
@@ -35,7 +36,7 @@ namespace AdoptifySystem.Controllers
                 db.User_.Add(user);
                 db.SaveChanges();
                 Users = db.User_.ToList();
-                
+
             }
             catch (Exception e)
             {
