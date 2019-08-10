@@ -1,21 +1,18 @@
-﻿@model IEnumerable<AdoptifySystem.Models.UserRole>
+﻿@model IEnumerable<AdoptifySystem.Models.Role_>
 
 @{
-    ViewBag.Title = "SearchUserRole";
+    ViewBag.Title = "Search User Role";
 }
 
-<h2>SearchUserRole</h2>
+<h2>Search User Role</h2>
 
-<p>
+@*<p>
     @Html.ActionLink("Create New", "Create")
-</p>
+</p>*@
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.Role_.Role_Name)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.User_.Username)
+            @Html.DisplayNameFor(model => model.Role_Name)
         </th>
         <th></th>
     </tr>
@@ -23,15 +20,12 @@
 @foreach (var item in Model) {
     <tr>
         <td>
-            @Html.DisplayFor(modelItem => item.Role_.Role_Name)
+            @Html.DisplayFor(modelItem => item.Role_Name)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.User_.Username)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.UserRole_ID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.UserRole_ID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.UserRole_ID })
+            @Html.ActionLink("Edit", "Edit", new { id=item.Role_ID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.Role_ID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.Role_ID })
         </td>
     </tr>
 }
