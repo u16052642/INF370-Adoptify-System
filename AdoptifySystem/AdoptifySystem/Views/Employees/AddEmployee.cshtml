@@ -1,0 +1,189 @@
+﻿
+@{
+    Layout = null;
+}
+
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+</head>
+<body>
+    <div>
+        <h2 align="center">Add Employee</h2>
+    </div>
+
+    <div class="row">
+        <div class="col-sm-10" style='background-color: #2ba6cb'><h1 style="color:white;">Employee Details</h1></div>
+
+    </div>
+
+
+    @*
+                                    <mat-option value="option">Mr</mat-option>
+                                    <mat-option value="option">Ms</mat-option>
+                                    <mat-option value="option">Mrs</mat-option>
+                                    <mat-option value="option">Dr</mat-option>
+                                    <mat-option value="option">Prof</mat-option>
+                           *@
+
+    @*<div class="form-group">
+                    
+                            <mat-option value="option">Owner</mat-option>
+                            <mat-option value="option">Manger</mat-option>
+                            <mat-option value="option">Admin Clerk</mat-option>
+                            <mat-option value="option">Kennel Manager</mat-option>
+                            <mat-option value="option">Staff</mat-option>
+    *@
+
+    <select>
+        @foreach (var item in Model.employeeList)
+        {
+            <option>
+                
+            </option>
+        }
+
+    </select>
+
+    <div class="custom-control custom-radio custom-control-inline">
+        <input type="radio" class="custom-control-input" id="Male">
+        <label class="custom-control-label" for="customRadio1">Male</label>
+    </div>
+    <div class="custom-control custom-radio custom-control-inline">
+        <input type="radio" class="custom-control-input" id="Female">
+        <label class="custom-control-label" for="customRadio2">Female</label>
+    </div>
+
+
+    <div class="form-group">
+        <div class="col-xs-12">
+            <label for="">
+                <h4>ID Number/Passport</h4>
+            </label>
+            <input type="text" class="form-control" id="identification" placeholder="Enter your ID Number/Passport">
+        @*</div>*@
+    @*</div>
+
+    <div class="form-group">
+        <div class="col-xs-6">*@  <br />
+            <label for="first_name">
+                <h4>First Name</h4>
+            </label>
+            <input type="text" class="form-control" id="first_name" placeholder="Enter First Name">
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-xs-6">
+            <label for="last_name">
+                <h4>Last Name</h4>
+            </label>
+            <input type="text" class="form-control" name="last_name" id="last_name" placeholder="Enter Last Name">
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-xs-6">
+            <label for="Address">
+                <h4>Home Address</h4>
+            </label>
+            <input type="text" class="form-control" name="Address" id="address" placeholder="Enter home address">
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-xs-6">
+            <label for="mobile">
+                <h4>Mobile</h4>
+            </label>
+            <input type="text" class="form-control" name="mobile" id="mobile" placeholder="Enter mobile number">
+        </div>
+    </div>
+    <div class="form-group">
+
+        <div class="col-xs-6">
+            <label for="email">
+                <h4>Email</h4>
+            </label>
+            <input type="email" class="form-control" name="email" id="email" placeholder="Enter your email">
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-xs-6">
+            <label for="password">
+                <h4>Date of Birth</h4>
+            </label><br>
+            <div class="md-form">
+                <input placeholder="Selected date" type="text" id="date-picker-example" class="form-control datepicker">
+                <label for="date-picker-example">Try me...</label>
+            </div>
+        </div>
+    </div>
+
+    // Data Picker Initialization
+    $('.datepicker').pickadate();
+
+    <div class="form-group">
+        <div class="col-xs-12">
+            <label for="password">
+                <h4>Date of Employment</h4>
+            </label><br>
+            <mat-form-field appearance="outline">
+                <input matinput="" [matdatepicker]="picker1" placeholder="Date of Employment">
+                <mat-datepicker-toggle matsuffix="" [for]="picker1"></mat-datepicker-toggle>
+                <mat-datepicker #picker1=""></mat-datepicker>
+            </mat-form-field>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-xs-6">
+            <label for="Username">
+                <h4>Username</h4>
+            </label>
+            <input type="email" class="form-control" id="username" placeholder="Username">
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-xs-6">
+            <label for="password">
+                <h4>Password</h4>
+            </label>
+            <input type="password" class="form-control" name="password" id="password" placeholder="Password">
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-xs-6">
+            <label for="password2">
+                <h4>Verify Password</h4>
+            </label>
+            <input type="password" class="form-control" name="password2" id="Verify_Password" placeholder="Verify password">
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-xs-6">
+            <label>
+                <h4>Upload Employee Contract</h4>
+            </label>
+            <input type="file">
+        </div>
+    </div>
+    <br>
+
+    <div class="form-group">
+        <div class="col-xs-12">
+            <br>
+            <button class="btn btn-lg btn-success pull-right" type="submit"><i class="glyphicon glyphicon-floppy-disk" title="Save the New Details"></i> Save</button>
+            <button class="btn btn-lg btn-primary pull-left" type="submit"><i class="	glyphicon glyphicon-remove-sign"></i> Cancel</button>            <button class="btn btn-lg pull-center" type="reset"><i class="glyphicon glyphicon-repeat"></i> Reset</button>
+            <!--<button class="btn btn-lg" type="reset"><i class="glyphicon glyphicon-repeat"></i> Reset</button>-->
+        </div>
+    </div>
+    </div>
+    </form>
+    </div>
+    </div>
