@@ -92,7 +92,7 @@
     @if (Model != null)
     {
         <datalist id="exampleList">
-            <option id="preview" value="James Bond"></option>
+
             @foreach (var item in Model.employeelist)
             {
                 <option>@item.Emp_Name @item.Emp_Surname</option>
@@ -104,14 +104,24 @@
         <div class="row">
             <div class="column" style="background-color:dodgerblue;">
                 <h2>Select Employee</h2>
-                @using (Html.BeginForm("GetUserDetails","Admin"))
+                @using (Html.BeginForm("GetUserDetails", "Admin"))
                 {
-                    @*https://stackoverflow.com/questions/14614702/html-combo-box-with-option-to-type-an-entry*@
-                    <input value="2" id="text" type="text" class="form-control" name="example" list="exampleList" onchange="Copy()" />
-                    <input id="hide" name="id" hidden />
-                    <button id="btnSave" class="btn btn-lg btn-success">Search</button>
+                    if (Model.employee != null)
+                    {
+                        @*https://stackoverflow.com/questions/14614702/html-combo-box-with-option-to-type-an-entry*@
+                        <input value="@Model.employee.Emp_Name @Model.employee.Emp_Surname" id="text" type="text" class="form-control" name="example" list="exampleList" onchange="Copy()" />
+                        <input id="hide" name="id" value="@Model.employee.Emp_ID" hidden />
+                        <button id="btnSave" class="btn btn-lg btn-success">Search</button>
+                    }
+                    else if (Model.employee == null)
+                    {
+                        @*https://stackoverflow.com/questions/14614702/html-combo-box-with-option-to-type-an-entry*@
+                        <input value="" id="text" type="text" class="form-control" name="example" list="exampleList" onchange="Copy()" />
+                        <input id="hide" name="id" hidden />
+                        <button id="btnSave" class="btn btn-lg btn-success">Search</button>
+                    }
                 }
-       
+
                 <br />
                 <h2>Clock-in TimeStamp</h2>
                 <h4 id="clock">
@@ -138,14 +148,20 @@
                 }
             </div>
         </div>
+        <div class="form-group">
+            @if (Model.employee != null)
+            {
+                using (Html.BeginForm("Checkin", "Admin"))
+                {
+                    <div class="col-xs-12">
+                        <br>
+                        <input id="hide" name="id" value="@Model.employee.Emp_ID" hidden />
+                        <button class="btn btn-lg btn-primary pull-left" type="submit"><i class="glyphicon glyphicon-remove-sign"></i> Cancel</button>
+                        <button class="btn btn-lg btn-success pull-right" type="submit"><i class="glyphicon glyphicon-floppy-disk"></i> Clock-in </button>
+                    </div>
+                }
+            }
+        </div>
     }
 </div>
-<div class="form-group">
-    <div class="col-xs-12">
-        <br>
-        <button class="btn btn-lg btn-primary pull-left" type="submit"><i class="glyphicon glyphicon-remove-sign"></i> Cancel</button>
-        <button class="btn btn-lg btn-success pull-right" type="submit">
-            <i class="glyphicon glyphicon-floppy-disk"></i> Clock-in
-        </button>
-    </div>
-</div>
+
