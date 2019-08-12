@@ -18,7 +18,7 @@ input[type=text], select {
 input[type=submit] {
     width: 300px;
     height: 40px;
-    background-color: #fff;
+    background-color: forestgreen;
     color: white;
     padding: 0px 20px;
     margin: 8px 0;
@@ -28,5 +28,5 @@ input[type=submit] {
 }
 
 input[type=submit]:hover {
-    background-color: #FF5733;
+    background-color: darkgreen;
 }

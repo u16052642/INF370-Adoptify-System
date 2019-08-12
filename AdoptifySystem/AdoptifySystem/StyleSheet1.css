@@ -27,9 +27,9 @@ a .sub:hover{
     text-decoration:none;
 }
 /* Add a background color to the button if it is clicked on (add the .active class with JS), and when you move the mouse over it (hover) */
-.accordion:hover {
-    background-color: #FF5733; /*kim*/
-}
+/*.accordion:hover {
+    background-color: #FF5733;
+}*/
 
 #menu {
     list-style:none;
@@ -48,15 +48,14 @@ a .sub:hover{
     font-size: 18px;
     font-family: 'Lato', sans-serif;
     padding: 10px;
-    background-color: #26282c; /*kim addition*/
-    /*background-color: #ab072e;*/
+    background-color: #26282c;
 }
 
     #menu a {
         text-decoration: none;
         color: #fff;
-        font-family: 'Lato', sans-serif; /*KIM*/
-        font-weight: 200; /*KIM*/
+        font-family: 'Lato', sans-serif;
+        font-weight: 200; 
     }
 #menu a:hover{
     color:beige;
@@ -99,11 +98,6 @@ a .sub:hover{
 .active, .sub:hover {
     /*background-color: #ccc; KIM*/ 
 }
-/* 
-    ----
-    KIM'S code
-    ----
-*/
 
 
 .active {
@@ -127,7 +121,7 @@ h4 {
     font-size: 17px;
 }
 .newButton {
-    background-color: #FF5733;
+    background-color: forestgreen;
     color: #fff;
     font-family: 'Lato', sans-serif;
     font-size: 14.5px;
@@ -139,17 +133,9 @@ h4 {
     
 }
    
-    .newButton a {
-        text-decoration: none;
-        color: #fff;
-    }
-        .newButton a:hover {
-            text-decoration: none;
-            color: #fff;
-        }
 
 input#buttons {
-    background-color: #FF5733;
+    background-color: forestgreen;
     border: solid thin #FF5733; 
 }
 .stdSearch {

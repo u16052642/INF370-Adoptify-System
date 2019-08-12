@@ -229,8 +229,9 @@
     <Compile Include="Controllers\Nickey\DonationsController.cs" />
     <Compile Include="Controllers\Nickey\FosterCareController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Controllers\VeterinarianController.cs" />
     <Compile Include="Controllers\Nickey\StockController.cs" />
+    <Compile Include="Controllers\VeterinariansController.cs" />
+    <Compile Include="Controllers\Vet_AppointmentController.cs" />
     <Compile Include="CrossBreed.cs">
       <DependentUpon>MyModel.tt</DependentUpon>
     </Compile>
@@ -399,9 +400,11 @@
     <Content Include="Content\themes\base\theme.css" />
     <Content Include="Content\themes\base\tooltip.css" />
     <Content Include="favicon.ico" />
+    <Content Include="favicon.png" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="wollies-logo_orig.jpg" />
     <EntityDeploy Include="MyModel.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>MyModel.Designer.cs</LastGenOutput>
@@ -491,9 +494,6 @@
     <Content Include="Scripts\popper.js.map" />
     <Content Include="Scripts\popper-utils.min.js.map" />
     <Content Include="Scripts\popper-utils.js.map" />
-    <Content Include="Views\Veterinarian\Index.cshtml" />
-    <Content Include="Views\Veterinarians\AddOrEdit.cshtml" />
-    <Content Include="Views\Veterinarians\Index.cshtml" />
     <Content Include="Views\Donations\AddDonation.cshtml" />
     <Content Include="Views\Donations\AddDonor.cshtml" />
     <Content Include="Views\Donations\MaintainDonor.cshtml" />
@@ -524,6 +524,16 @@
     <Content Include="Views\Stock\ReceiveStock.cshtml" />
     <Content Include="Views\Admin\Login.cshtml" />
     <Content Include="Views\Admin\Authorize.cshtml" />
+    <Content Include="Views\Veterinarians\Create.cshtml" />
+    <Content Include="Views\Veterinarians\Delete.cshtml" />
+    <Content Include="Views\Veterinarians\Details.cshtml" />
+    <Content Include="Views\Veterinarians\Edit.cshtml" />
+    <Content Include="Views\Veterinarians\Index.cshtml" />
+    <Content Include="Views\Vet_Appointment\Create.cshtml" />
+    <Content Include="Views\Vet_Appointment\Delete.cshtml" />
+    <Content Include="Views\Vet_Appointment\Details.cshtml" />
+    <Content Include="Views\Vet_Appointment\Edit.cshtml" />
+    <Content Include="Views\Vet_Appointment\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
