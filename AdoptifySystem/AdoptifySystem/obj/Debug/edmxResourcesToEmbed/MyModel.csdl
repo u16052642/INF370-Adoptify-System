@@ -294,9 +294,11 @@
     <Property Name="Emp_Date_Employed" Type="DateTime" Precision="0" />
     <Property Name="Title_ID" Type="Int32" />
     <Property Name="Emp_Type_ID" Type="Int32" />
+    <Property Name="Employee_Status_ID" Type="Int32" />
     <NavigationProperty Name="Emp_Kennel" Relationship="Self.fkempk" FromRole="Employee" ToRole="Emp_Kennel" />
     <NavigationProperty Name="Title" Relationship="Self.fkemp" FromRole="Employee" ToRole="Title" />
     <NavigationProperty Name="Employee_Type" Relationship="Self.fkemp1" FromRole="Employee" ToRole="Employee_Type" />
+    <NavigationProperty Name="Employee_Status" Relationship="Self.fkemp2" FromRole="Employee" ToRole="Employee_Status" />
     <NavigationProperty Name="TimeSheets" Relationship="Self.fktime" FromRole="Employee" ToRole="TimeSheet" />
     <NavigationProperty Name="User_" Relationship="Self.fkuser" FromRole="Employee" ToRole="User_" />
   </EntityType>
@@ -306,6 +308,7 @@
     </Key>
     <Property Name="Employee_Status_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="Employee_Status_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Employees" Relationship="Self.fkemp2" FromRole="Employee_Status" ToRole="Employee" />
   </EntityType>
   <EntityType Name="Employee_Type">
     <Key>
@@ -337,9 +340,9 @@
       <PropertyRef Name="EventID" />
     </Key>
     <Property Name="EventID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="Subject" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Subject" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
     <Property Name="Description" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
-    <Property Name="Start" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="Start" Type="DateTime" Precision="3" />
     <Property Name="EventEnd" Type="DateTime" Precision="3" />
     <Property Name="ThemeColour" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
     <Property Name="IsFullDay" Type="Boolean" />
@@ -515,8 +518,9 @@
       <PropertyRef Name="UserID" />
     </Key>
     <Property Name="UserID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="Username" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
-    <Property Name="Emp_ID" Type="Int32" />
+    <Property Name="Username" Type="String" MaxLength="150" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Password" Type="String" MaxLength="150" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Emp_ID" Type="Int32" Nullable="false" />
     <NavigationProperty Name="Audit_Log" Relationship="Self.fkaudlog" FromRole="User_" ToRole="Audit_Log" />
     <NavigationProperty Name="Employee" Relationship="Self.fkuser" FromRole="User_" ToRole="Employee" />
     <NavigationProperty Name="UserRoles" Relationship="Self.fkuserol" FromRole="User_" ToRole="UserRole" />
@@ -997,6 +1001,18 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="fkemp2">
+    <End Role="Employee_Status" Type="Self.Employee_Status" Multiplicity="0..1" />
+    <End Role="Employee" Type="Self.Employee" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Employee_Status">
+        <PropertyRef Name="Employee_Status_ID" />
+      </Principal>
+      <Dependent Role="Employee">
+        <PropertyRef Name="Employee_Status_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="fktime">
     <End Role="Employee" Type="Self.Employee" Multiplicity="0..1" />
     <End Role="TimeSheet" Type="Self.TimeSheet" Multiplicity="*" />
@@ -1010,7 +1026,7 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="fkuser">
-    <End Role="Employee" Type="Self.Employee" Multiplicity="0..1" />
+    <End Role="Employee" Type="Self.Employee" Multiplicity="1" />
     <End Role="User_" Type="Self.User_" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Employee">
@@ -1357,6 +1373,10 @@
     </AssociationSet>
     <AssociationSet Name="fkemp1" Association="Self.fkemp1">
       <End Role="Employee_Type" EntitySet="Employee_Type" />
+      <End Role="Employee" EntitySet="Employees" />
+    </AssociationSet>
+    <AssociationSet Name="fkemp2" Association="Self.fkemp2">
+      <End Role="Employee_Status" EntitySet="Employee_Status" />
       <End Role="Employee" EntitySet="Employees" />
     </AssociationSet>
     <AssociationSet Name="fktime" Association="Self.fktime">

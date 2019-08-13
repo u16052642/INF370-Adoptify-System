@@ -269,6 +269,7 @@
           <ScalarProperty Name="Emp_Date_Employed" ColumnName="Emp_Date_Employed" />
           <ScalarProperty Name="Title_ID" ColumnName="Title_ID" />
           <ScalarProperty Name="Emp_Type_ID" ColumnName="Emp_Type_ID" />
+          <ScalarProperty Name="Employee_Status_ID" ColumnName="Employee_Status_ID" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -477,6 +478,7 @@
         <MappingFragment StoreEntitySet="User_">
           <ScalarProperty Name="UserID" ColumnName="UserID" />
           <ScalarProperty Name="Username" ColumnName="Username" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
           <ScalarProperty Name="Emp_ID" ColumnName="Emp_ID" />
         </MappingFragment>
       </EntityTypeMapping>
