@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web.Mvc;
 using Google.Authenticator;
-using AdoptifySystem.Models;
+using AdoptifySystem.Models.nickeymodel;
 using System.Net.Mail;
 using System.Net;
 using System.Web.Security;
