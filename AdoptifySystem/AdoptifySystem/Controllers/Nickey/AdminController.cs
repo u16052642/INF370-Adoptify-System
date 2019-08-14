@@ -18,7 +18,7 @@ namespace AdoptifySystem.Controllers
         use later for generate Google authenticator code.*/
 
         //this is the Db that i will be unstatnitatiung to use thought the whole controller
-        Wollies_ShelterEntities1 db = new Wollies_ShelterEntities1();
+        Wollies_ShelterEntities db = new Wollies_ShelterEntities();
         public static Flexible flex = new Flexible();
         public ActionResult Login()
         {
@@ -36,7 +36,7 @@ namespace AdoptifySystem.Controllers
         {
             
             bool status = false;
-            Wollies_ShelterEntities1 db = new Wollies_ShelterEntities1();
+            Wollies_ShelterEntities db = new Wollies_ShelterEntities();
             //check username and password form our database here
             //for demo I am going to use Admin as Username and Password1 as Password static value
             List<User_> Users;
@@ -124,7 +124,7 @@ namespace AdoptifySystem.Controllers
             string message = "";
             bool status = false;
 
-            using (Wollies_ShelterEntities1 dc = new Wollies_ShelterEntities1())
+            using (Wollies_ShelterEntities dc = new Wollies_ShelterEntities())
             {
 
                 //adding a employee

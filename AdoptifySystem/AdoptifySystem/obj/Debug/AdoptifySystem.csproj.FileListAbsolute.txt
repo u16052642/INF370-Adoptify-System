@@ -135,4 +135,5 @@ C:\Users\Nickey\Desktop\370\INF370-Adoptify-System\AdoptifySystem\AdoptifySystem
 C:\Users\Nickey\Desktop\370\INF370-Adoptify-System\AdoptifySystem\AdoptifySystem\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
 C:\Users\Nickey\Desktop\370\INF370-Adoptify-System\AdoptifySystem\AdoptifySystem\obj\Debug\AdoptifySystem.csprojAssemblyReference.cache
 C:\Users\Nickey\Desktop\370\INF370-Adoptify-System\AdoptifySystem\AdoptifySystem\obj\Debug\AdoptifySystem.csproj.CoreCompileInputs.cache
-C:\Users\Nickey\Desktop\370\INF370-Adoptify-System\AdoptifySystem\AdoptifySystem\obj\Debug\AdoptifySystem.csprojAssemblyReference.cache
+C:\Users\Nickey\Desktop\370\INF370-Adoptify-System\AdoptifySystem\AdoptifySystem\obj\Debug\AdoptifySystem.dll
+C:\Users\Nickey\Desktop\370\INF370-Adoptify-System\AdoptifySystem\AdoptifySystem\obj\Debug\AdoptifySystem.pdb
