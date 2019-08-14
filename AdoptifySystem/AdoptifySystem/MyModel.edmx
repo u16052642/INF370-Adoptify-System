@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="Wollies_ShelterModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="Wollies_ShelterModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Adopter">
           <Key>
             <PropertyRef Name="Adopter_ID" />
@@ -253,7 +253,6 @@
           <Property Name="Emp_Date_Employed" Type="date" />
           <Property Name="Title_ID" Type="int" />
           <Property Name="Emp_Type_ID" Type="int" />
-          <Property Name="Employee_Status_ID" Type="int" />
         </EntityType>
         <EntityType Name="Employee_Status">
           <Key>
@@ -824,18 +823,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="fkemp2">
-          <End Role="Employee_Status" Type="Self.Employee_Status" Multiplicity="0..1" />
-          <End Role="Employee" Type="Self.Employee" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Employee_Status">
-              <PropertyRef Name="Employee_Status_ID" />
-            </Principal>
-            <Dependent Role="Employee">
-              <PropertyRef Name="Employee_Status_ID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="fkempk">
           <End Role="Employee" Type="Self.Employee" Multiplicity="0..1" />
           <End Role="Emp_Kennel" Type="Self.Emp_Kennel" Multiplicity="*" />
@@ -1254,10 +1241,6 @@
             <End Role="Employee_Type" EntitySet="Employee_Type" />
             <End Role="Employee" EntitySet="Employee" />
           </AssociationSet>
-          <AssociationSet Name="fkemp2" Association="Self.fkemp2">
-            <End Role="Employee_Status" EntitySet="Employee_Status" />
-            <End Role="Employee" EntitySet="Employee" />
-          </AssociationSet>
           <AssociationSet Name="fkempk" Association="Self.fkempk">
             <End Role="Employee" EntitySet="Employee" />
             <End Role="Emp_Kennel" EntitySet="Emp_Kennel" />
@@ -1347,8 +1330,7 @@
             <End Role="Volunteer_Hours" EntitySet="Volunteer_Hours" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="Wollies_ShelterModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -3066,7 +3048,6 @@
                 <ScalarProperty Name="Emp_Date_Employed" ColumnName="Emp_Date_Employed" />
                 <ScalarProperty Name="Title_ID" ColumnName="Title_ID" />
                 <ScalarProperty Name="Emp_Type_ID" ColumnName="Emp_Type_ID" />
-                <ScalarProperty Name="Employee_Status_ID" ColumnName="Employee_Status_ID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
