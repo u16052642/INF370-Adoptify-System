@@ -407,6 +407,7 @@
     <Content Include="MyModel.edmx.diagram">
       <DependentUpon>MyModel.edmx</DependentUpon>
     </Content>
+    <Fakes Include="Fakes\Antlr3.Runtime.fakes" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="MyModel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
