@@ -217,6 +217,8 @@
     <Compile Include="Capture_Medical_Card.cs">
       <DependentUpon>MyModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Controllers\Aditi\AdoptersController.cs" />
+    <Compile Include="Controllers\Aditi\VolunteersController.cs" />
     <Compile Include="Controllers\Cassie\ReportController.cs" />
     <Compile Include="Controllers\Nickey\AdminController.cs" />
     <Compile Include="Controllers\Nickey\DonationsController.cs" />
@@ -527,6 +529,16 @@
     <Content Include="Views\Vet_Appointment\Edit.cshtml" />
     <Content Include="Views\Vet_Appointment\Index.cshtml" />
     <Content Include="Scripts\README.md" />
+    <Content Include="Views\Adopters\Create.cshtml" />
+    <Content Include="Views\Adopters\Delete.cshtml" />
+    <Content Include="Views\Adopters\Details.cshtml" />
+    <Content Include="Views\Adopters\Edit.cshtml" />
+    <Content Include="Views\Adopters\Index.cshtml" />
+    <Content Include="Views\Volunteers\Create.cshtml" />
+    <Content Include="Views\Volunteers\Delete.cshtml" />
+    <Content Include="Views\Volunteers\Details.cshtml" />
+    <Content Include="Views\Volunteers\Edit.cshtml" />
+    <Content Include="Views\Volunteers\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
