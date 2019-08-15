@@ -1,5 +1,4 @@
-﻿@*@model AdoptifySystem.Models.nickeymodel.Flexible*@
-@model AdoptifySystem.Stock
+﻿@model AdoptifySystem.Stock
 
 @{
     ViewBag.Title = "AddStock";
@@ -40,35 +39,29 @@
             </div>
         </div>
 
-        <div class="form-group">
-            @*@Html.LabelFor(model => model.Stock_Type_ID, "Stock_Type_ID", htmlAttributes: new { @class = "control-label col-md-2" })
+        @*<div class="form-group">
+            @Html.LabelFor(model => model.Stock_Type_ID, "Stock_Type_ID", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.DropDownList("Stock_Type_ID", null, htmlAttributes: new { @class = "form-control" })
                 @Html.ValidationMessageFor(model => model.Stock_Type_ID, "", new { @class = "text-danger" })
-            </div>*@
+            </div>
         </div>
 
         <div class="form-group">
-            @*@Html.LabelFor(model => model.Packaging_Type_ID, "Packaging_Type_ID", htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.Packaging_Type_ID, "Packaging_Type_ID", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.DropDownList("Packaging_Type_ID", null, htmlAttributes: new { @class = "form-control" })
                 @Html.ValidationMessageFor(model => model.Packaging_Type_ID, "", new { @class = "text-danger" })
-            </div>*@
+            </div>
         </div>
 
         <div class="form-group">
-        @*@if (Model != null)
-        {
-
-            <datalist id="exampleList">
-
-                @foreach (var item in Model)
-        {
-                    <option>@item.Emp_Name @item.Emp_Surname</option>
-                    <input id="@item.Emp_Name @item.Emp_Surname" value="@item.Emp_ID" hidden />
-        }
-            </datalist>}*@
-        </div>
+            @Html.LabelFor(model => model.Unit_Type_ID, "Unit_Type_ID", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownList("Unit_Type_ID", null, htmlAttributes: new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.Unit_Type_ID, "", new { @class = "text-danger" })
+            </div>
+        </div>*@
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
