@@ -1,12 +1,12 @@
 ﻿@model Google.Authenticator.SetupCode
 @{
-    
+
 
 }
 <div class="login">
 
     <h1>Authorize Login</h1>
-    @using (Html.BeginForm("Verify2FA","Admin"))
+    @using (Html.BeginForm("Verify2FA", "Admin"))
     {
         <img src="@Model.QrCodeSetupImageUrl" />
         <div>@ViewBag.Message</div>
