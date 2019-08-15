@@ -269,7 +269,6 @@
           <ScalarProperty Name="Emp_Date_Employed" ColumnName="Emp_Date_Employed" />
           <ScalarProperty Name="Title_ID" ColumnName="Title_ID" />
           <ScalarProperty Name="Emp_Type_ID" ColumnName="Emp_Type_ID" />
-          <ScalarProperty Name="Employee_Status_ID" ColumnName="Employee_Status_ID" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

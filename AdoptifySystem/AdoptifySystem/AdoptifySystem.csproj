@@ -400,16 +400,6 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
-    <Content Include="wollies-logo_orig.jpg" />
-    <EntityDeploy Include="MyModel.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>MyModel.Designer.cs</LastGenOutput>
-    </EntityDeploy>
-    <Content Include="MyModel.edmx.diagram">
-      <DependentUpon>MyModel.edmx</DependentUpon>
-    </Content>
-    <Fakes Include="Fakes\Antlr3.Runtime.fakes" />
-    <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="MyModel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>MyModel.edmx</DependentUpon>
@@ -420,6 +410,16 @@
       <DependentUpon>MyModel.edmx</DependentUpon>
       <LastGenOutput>MyModel.cs</LastGenOutput>
     </Content>
+    <Content Include="wollies-logo_orig.jpg" />
+    <Fakes Include="Fakes\Antlr3.Runtime.fakes" />
+    <EntityDeploy Include="MyModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>MyModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="MyModel.edmx.diagram">
+      <DependentUpon>MyModel.edmx</DependentUpon>
+    </Content>
+    <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />

@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="Wollies_ShelterModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="Wollies_ShelterModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Adopter">
           <Key>
             <PropertyRef Name="Adopter_ID" />
@@ -1330,7 +1330,8 @@
             <End Role="Volunteer_Hours" EntitySet="Volunteer_Hours" />
           </AssociationSet>
         </EntityContainer>
-      </Schema></edmx:StorageModels>
+      </Schema>
+    </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="Wollies_ShelterModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -1628,11 +1629,9 @@
           <Property Name="Emp_Date_Employed" Type="DateTime" Precision="0" />
           <Property Name="Title_ID" Type="Int32" />
           <Property Name="Emp_Type_ID" Type="Int32" />
-          <Property Name="Employee_Status_ID" Type="Int32" />
           <NavigationProperty Name="Emp_Kennel" Relationship="Self.fkempk" FromRole="Employee" ToRole="Emp_Kennel" />
           <NavigationProperty Name="Title" Relationship="Self.fkemp" FromRole="Employee" ToRole="Title" />
           <NavigationProperty Name="Employee_Type" Relationship="Self.fkemp1" FromRole="Employee" ToRole="Employee_Type" />
-          <NavigationProperty Name="Employee_Status" Relationship="Self.fkemp2" FromRole="Employee" ToRole="Employee_Status" />
           <NavigationProperty Name="TimeSheets" Relationship="Self.fktime" FromRole="Employee" ToRole="TimeSheet" />
           <NavigationProperty Name="User_" Relationship="Self.fkuser" FromRole="Employee" ToRole="User_" />
         </EntityType>
@@ -1642,7 +1641,6 @@
           </Key>
           <Property Name="Employee_Status_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Employee_Status_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="Employees" Relationship="Self.fkemp2" FromRole="Employee_Status" ToRole="Employee" />
         </EntityType>
         <EntityType Name="Employee_Type">
           <Key>
@@ -2335,18 +2333,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="fkemp2">
-          <End Role="Employee_Status" Type="Self.Employee_Status" Multiplicity="0..1" />
-          <End Role="Employee" Type="Self.Employee" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Employee_Status">
-              <PropertyRef Name="Employee_Status_ID" />
-            </Principal>
-            <Dependent Role="Employee">
-              <PropertyRef Name="Employee_Status_ID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="fktime">
           <End Role="Employee" Type="Self.Employee" Multiplicity="0..1" />
           <End Role="TimeSheet" Type="Self.TimeSheet" Multiplicity="*" />
@@ -2707,10 +2693,6 @@
           </AssociationSet>
           <AssociationSet Name="fkemp1" Association="Self.fkemp1">
             <End Role="Employee_Type" EntitySet="Employee_Type" />
-            <End Role="Employee" EntitySet="Employees" />
-          </AssociationSet>
-          <AssociationSet Name="fkemp2" Association="Self.fkemp2">
-            <End Role="Employee_Status" EntitySet="Employee_Status" />
             <End Role="Employee" EntitySet="Employees" />
           </AssociationSet>
           <AssociationSet Name="fktime" Association="Self.fktime">

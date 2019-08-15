@@ -1,7 +1,6 @@
 ﻿@model AdoptifySystem.Donation_Type
-
 @{
-    ViewBag.Title = "AddDonationType";
+    ViewBag.Title = "Add Donation Type";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
@@ -9,7 +8,7 @@
 @using (Html.BeginForm()) 
 {   
     <div class="form-horizontal">
-        <h4>Add Donation Type</h4>
+        <h4 style="color:red">@ViewBag.errormessage</h4>
         <hr />
         <div class="form-group">
             <label>Donation Type Name</label>
@@ -27,8 +26,8 @@
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <button type="button" name="button" class="btn btn-warning">Cancel</button>
-                <button type="submit" name="button" class=" btn btn-success float-right">Save</button>
+                <button type="submit" name="button" value="Cancel" class="btn btn-warning">Cancel</button>
+                <button type="submit" name="button" value="Save" class=" btn btn-success float-right">Save</button>
             </div>
         </div>
     </div>

@@ -345,57 +345,105 @@ namespace AdoptifySystem.Controllers
             return View();
         }
         [HttpPost]
-        public ActionResult AddUserRole(Role_ role)
+        public ActionResult AddUserRole(Role_ role, string button)
         {
-            //These variables are here to direct person depending on where they have to go
-            string controllername = "";
-            string actionname = "";
-
-            //first check if its in similar data on the database
-            try
+            ViewBag.errorMessage = "";
+            //Donation_Type asd = new Donation_Type();
+            if (button == "Save")
             {
-                int counter = 0;
-                //Role_ dummy = new Role_();
-                //dummy.Role_Name = "manager";
-                //db.Role_.Add(dummy);
-                //db.SaveChanges();
-                var roles = db.Role_.ToList();
-                foreach (var item in roles)
+                try
                 {
-                    if (item.Role_Name == role.Role_Name)
+
+                    List<Role_> Roles = new List<Role_>();
+                    Roles = db.Role_.ToList();
+                    if (Roles.Count != 0)
                     {
-                        controllername = "Admin";
-                        actionname = "AddUserRole";
-                        ViewBag.errormessage = "There is a duplicate";
-                        counter++;
+                        int count = 0;
+                        foreach (var item in Roles)
+                        {
+                            if (item.Role_Name == role.Role_Name)
+                            {
+                                count++;
+                                ViewBag.errorMessage = "There is a duplicate Donation Type Already";
+                                return View();
+                            }
+
+                        }
+                        if (count == 0)
+                        {
+                            db.Role_.Add(role);
+                            db.SaveChanges();
+                        }
+                    }
+                    else
+                    {
+
+                        db.Role_.Add(role);
+                        db.SaveChanges();
+
+
                     }
 
                 }
-                if (counter <= 1)
+                catch (Exception e)
                 {
-                    return RedirectToAction(actionname, controllername);
+                    ViewBag.errorMessage = "There was an Error with network please try again: " + e.Message;
+                    return View();
                 }
+
             }
-            catch
+            else if (button == "Cancel")
             {
-                return RedirectToAction("Error", "ErrorController");
+
+                return RedirectToAction("Index", "Home");
             }
-            return RedirectToAction(actionname, controllername);
+            return RedirectToAction("Index", "Home");
         }
 
         public ActionResult SearchUserRole()
         {
 
+            ViewBag.errormessage = "";
+            List<Role_> roles = new List<Role_>();
+            try
+            {
+                roles = db.Role_.ToList();
+                if (roles.Count == 0)
+                {
 
-            return View();
+                }
+                return View(roles);
+            }
+            catch (Exception e)
+            {
+                ViewBag.errormessage = "there was a network error: " + e.Message;
+                return View();
+            }
 
         }
-        public ActionResult MaintainUserRole()
+
+        public ActionResult MaintainUserRole(int? id)
         {
+
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Role_ role = db.Role_.Find(id);
+            if (role == null)
+            {
+                return HttpNotFound();
+            }
+            return View(role);
+        }
+        [HttpPost]
+        public ActionResult MaintainUserRole(Role_ role)
+        {
+
             return View();
         }
 
-        [NonAction]
+    [NonAction]
         public void SendVerificationLinkEmail(string emailID, string activationCode, string emailFor = "VerifyAccount")
         {
            using (MailMessage mail = new MailMessage())

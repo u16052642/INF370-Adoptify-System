@@ -248,7 +248,6 @@
     <Property Name="Emp_Date_Employed" Type="date" />
     <Property Name="Title_ID" Type="int" />
     <Property Name="Emp_Type_ID" Type="int" />
-    <Property Name="Employee_Status_ID" Type="int" />
   </EntityType>
   <EntityType Name="Employee_Status">
     <Key>
@@ -819,18 +818,6 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="fkemp2">
-    <End Role="Employee_Status" Type="Self.Employee_Status" Multiplicity="0..1" />
-    <End Role="Employee" Type="Self.Employee" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Employee_Status">
-        <PropertyRef Name="Employee_Status_ID" />
-      </Principal>
-      <Dependent Role="Employee">
-        <PropertyRef Name="Employee_Status_ID" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
   <Association Name="fkempk">
     <End Role="Employee" Type="Self.Employee" Multiplicity="0..1" />
     <End Role="Emp_Kennel" Type="Self.Emp_Kennel" Multiplicity="*" />
@@ -1247,10 +1234,6 @@
     </AssociationSet>
     <AssociationSet Name="fkemp1" Association="Self.fkemp1">
       <End Role="Employee_Type" EntitySet="Employee_Type" />
-      <End Role="Employee" EntitySet="Employee" />
-    </AssociationSet>
-    <AssociationSet Name="fkemp2" Association="Self.fkemp2">
-      <End Role="Employee_Status" EntitySet="Employee_Status" />
       <End Role="Employee" EntitySet="Employee" />
     </AssociationSet>
     <AssociationSet Name="fkempk" Association="Self.fkempk">
