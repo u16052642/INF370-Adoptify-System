@@ -1,16 +1,18 @@
-﻿@model AdoptifySystem.Models.User_
+﻿@model Google.Authenticator.SetupCode
 @{
-    
+
 
 }
 <div class="login">
+
     <h1>Authorize Login</h1>
-    @using (Html.BeginForm("Authorize","Admin"))
+    @using (Html.BeginForm("Verify2FA", "Admin"))
     {
+        <img src="@Model.QrCodeSetupImageUrl" />
         <div>@ViewBag.Message</div>
         <div class="form-group">
-            <label for="Code"></label>
-            <input class="form-control textbox" type="text"/>
+            <label for="Code">Authorize Login</label>
+            @Html.TextBox("token", "", new { @class = "form-control textbox" })
         </div>
         <input type="submit" value="Authorize" class="btn btn-primary btn-block btn-large" />
     }

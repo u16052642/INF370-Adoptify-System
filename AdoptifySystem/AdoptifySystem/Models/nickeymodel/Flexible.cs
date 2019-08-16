@@ -1,0 +1,16 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+
+namespace AdoptifySystem.Models.nickeymodel
+{
+    public class Flexible
+    {
+        public List<Employee> employeelist { get; set; }
+        public Employee employee { get; set; }
+
+        public List<Packaging_Type> packaging_Types { get; set; }
+        public List<Unit_Type> unit_Types { get; set; }
+    }
+}

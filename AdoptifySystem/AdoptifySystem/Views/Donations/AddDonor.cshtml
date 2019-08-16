@@ -1,7 +1,38 @@
-﻿
+﻿@model AdoptifySystem.Donor
+
 @{
     ViewBag.Title = "AddDonor";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>AddDonor</h2>
+<h2>Add Donor</h2>
 
+@using (Html.BeginForm())
+{
+<div class="row">
+    <div class="col-lg-12">
+        <div class="input-group">
+            <label>Text1</label>
+            <input type="text" value="" />&nbsp; @*/* if you want space between text and label use &nbsp;*/*@
+            <label>Text2</label>&nbsp;
+            <input type="text" value="" />&nbsp;
+            <label>Text3</label>&nbsp;
+            <input type="text" value="" />&nbsp;
+            <label>Text4</label>&nbsp;
+            <input type="text" value="" />&nbsp;
+
+        </div><br />
+        <div class="input-group">
+            <label>Text1</label>
+            <input type="text" value="" />
+            <label>Text2</label>
+            <input type="text" value="" />
+            <label>Text3</label>
+            <input type="text" value="" />
+            <label>Text4</label>
+            <input type="text" value="" />
+
+        </div>
+    </div>
+</div>
+}

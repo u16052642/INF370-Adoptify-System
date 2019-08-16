@@ -133,98 +133,23 @@ C:\Users\Nickey\Desktop\370\INF370-Adoptify-System\AdoptifySystem\AdoptifySystem
 C:\Users\Nickey\Desktop\370\INF370-Adoptify-System\AdoptifySystem\AdoptifySystem\bin\Microsoft.Owin.Security.Google.xml
 C:\Users\Nickey\Desktop\370\INF370-Adoptify-System\AdoptifySystem\AdoptifySystem\bin\Microsoft.Owin.Security.Twitter.xml
 C:\Users\Nickey\Desktop\370\INF370-Adoptify-System\AdoptifySystem\AdoptifySystem\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
-C:\Users\Nickey\Desktop\370\INF370-Adoptify-System\AdoptifySystem\AdoptifySystem\obj\Debug\AdoptifySystem.csprojAssemblyReference.cache
 C:\Users\Nickey\Desktop\370\INF370-Adoptify-System\AdoptifySystem\AdoptifySystem\obj\Debug\AdoptifySystem.csproj.CoreCompileInputs.cache
-C:\Users\Nickey\Desktop\370\INF370-Adoptify-System\AdoptifySystem\AdoptifySystem\obj\Debug\AdoptifySystem.csproj.CopyComplete
 C:\Users\Nickey\Desktop\370\INF370-Adoptify-System\AdoptifySystem\AdoptifySystem\obj\Debug\AdoptifySystem.dll
 C:\Users\Nickey\Desktop\370\INF370-Adoptify-System\AdoptifySystem\AdoptifySystem\obj\Debug\AdoptifySystem.pdb
+C:\Users\Nickey\Desktop\370\INF370-Adoptify-System\AdoptifySystem\AdoptifySystem\bin\roslyn\csc.exe.config
+C:\Users\Nickey\Desktop\370\INF370-Adoptify-System\AdoptifySystem\AdoptifySystem\bin\roslyn\csc.rsp
+C:\Users\Nickey\Desktop\370\INF370-Adoptify-System\AdoptifySystem\AdoptifySystem\bin\roslyn\csi.exe
+C:\Users\Nickey\Desktop\370\INF370-Adoptify-System\AdoptifySystem\AdoptifySystem\bin\roslyn\csi.rsp
+C:\Users\Nickey\Desktop\370\INF370-Adoptify-System\AdoptifySystem\AdoptifySystem\bin\roslyn\Microsoft.CodeAnalysis.CSharp.Scripting.dll
+C:\Users\Nickey\Desktop\370\INF370-Adoptify-System\AdoptifySystem\AdoptifySystem\bin\roslyn\Microsoft.CodeAnalysis.Scripting.dll
+C:\Users\Nickey\Desktop\370\INF370-Adoptify-System\AdoptifySystem\AdoptifySystem\bin\roslyn\Microsoft.DiaSymReader.Native.amd64.dll
+C:\Users\Nickey\Desktop\370\INF370-Adoptify-System\AdoptifySystem\AdoptifySystem\bin\roslyn\Microsoft.DiaSymReader.Native.x86.dll
+C:\Users\Nickey\Desktop\370\INF370-Adoptify-System\AdoptifySystem\AdoptifySystem\bin\roslyn\System.AppContext.dll
+C:\Users\Nickey\Desktop\370\INF370-Adoptify-System\AdoptifySystem\AdoptifySystem\bin\roslyn\System.Diagnostics.StackTrace.dll
+C:\Users\Nickey\Desktop\370\INF370-Adoptify-System\AdoptifySystem\AdoptifySystem\bin\roslyn\System.IO.FileSystem.dll
+C:\Users\Nickey\Desktop\370\INF370-Adoptify-System\AdoptifySystem\AdoptifySystem\bin\roslyn\System.IO.FileSystem.Primitives.dll
+C:\Users\Nickey\Desktop\370\INF370-Adoptify-System\AdoptifySystem\AdoptifySystem\bin\roslyn\vbc.exe.config
+C:\Users\Nickey\Desktop\370\INF370-Adoptify-System\AdoptifySystem\AdoptifySystem\bin\roslyn\vbc.rsp
 C:\Users\Nickey\Desktop\370\INF370-Adoptify-System\AdoptifySystem\AdoptifySystem\bin\Google.Authenticator.dll
-C:\Users\Divin\Desktop\School 2019\INF 370\Adoptify System Program\INF370-Adoptify System final (del5)\AdoptifySystem\AdoptifySystem\bin\Google.Authenticator.dll
-C:\Users\Divin\Desktop\School 2019\INF 370\Adoptify System Program\INF370-Adoptify System final (del5)\AdoptifySystem\AdoptifySystem\bin\roslyn\csc.exe
-C:\Users\Divin\Desktop\School 2019\INF 370\Adoptify System Program\INF370-Adoptify System final (del5)\AdoptifySystem\AdoptifySystem\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
-C:\Users\Divin\Desktop\School 2019\INF 370\Adoptify System Program\INF370-Adoptify System final (del5)\AdoptifySystem\AdoptifySystem\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
-C:\Users\Divin\Desktop\School 2019\INF 370\Adoptify System Program\INF370-Adoptify System final (del5)\AdoptifySystem\AdoptifySystem\bin\roslyn\Microsoft.CodeAnalysis.dll
-C:\Users\Divin\Desktop\School 2019\INF 370\Adoptify System Program\INF370-Adoptify System final (del5)\AdoptifySystem\AdoptifySystem\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
-C:\Users\Divin\Desktop\School 2019\INF 370\Adoptify System Program\INF370-Adoptify System final (del5)\AdoptifySystem\AdoptifySystem\bin\roslyn\Microsoft.CSharp.Core.targets
-C:\Users\Divin\Desktop\School 2019\INF 370\Adoptify System Program\INF370-Adoptify System final (del5)\AdoptifySystem\AdoptifySystem\bin\roslyn\Microsoft.VisualBasic.Core.targets
-C:\Users\Divin\Desktop\School 2019\INF 370\Adoptify System Program\INF370-Adoptify System final (del5)\AdoptifySystem\AdoptifySystem\bin\roslyn\System.Collections.Immutable.dll
-C:\Users\Divin\Desktop\School 2019\INF 370\Adoptify System Program\INF370-Adoptify System final (del5)\AdoptifySystem\AdoptifySystem\bin\roslyn\System.Reflection.Metadata.dll
-C:\Users\Divin\Desktop\School 2019\INF 370\Adoptify System Program\INF370-Adoptify System final (del5)\AdoptifySystem\AdoptifySystem\bin\roslyn\vbc.exe
-C:\Users\Divin\Desktop\School 2019\INF 370\Adoptify System Program\INF370-Adoptify System final (del5)\AdoptifySystem\AdoptifySystem\bin\roslyn\VBCSCompiler.exe
-C:\Users\Divin\Desktop\School 2019\INF 370\Adoptify System Program\INF370-Adoptify System final (del5)\AdoptifySystem\AdoptifySystem\bin\roslyn\VBCSCompiler.exe.config
-C:\Users\Aditi\Desktop\INF370-Adoptify-System\AdoptifySystem\AdoptifySystem\bin\roslyn\csc.exe
-C:\Users\Aditi\Desktop\INF370-Adoptify-System\AdoptifySystem\AdoptifySystem\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
-C:\Users\Aditi\Desktop\INF370-Adoptify-System\AdoptifySystem\AdoptifySystem\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
-C:\Users\Aditi\Desktop\INF370-Adoptify-System\AdoptifySystem\AdoptifySystem\bin\roslyn\Microsoft.CodeAnalysis.dll
-C:\Users\Aditi\Desktop\INF370-Adoptify-System\AdoptifySystem\AdoptifySystem\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
-C:\Users\Aditi\Desktop\INF370-Adoptify-System\AdoptifySystem\AdoptifySystem\bin\roslyn\Microsoft.CSharp.Core.targets
-C:\Users\Aditi\Desktop\INF370-Adoptify-System\AdoptifySystem\AdoptifySystem\bin\roslyn\Microsoft.VisualBasic.Core.targets
-C:\Users\Aditi\Desktop\INF370-Adoptify-System\AdoptifySystem\AdoptifySystem\bin\roslyn\System.Collections.Immutable.dll
-C:\Users\Aditi\Desktop\INF370-Adoptify-System\AdoptifySystem\AdoptifySystem\bin\roslyn\System.Reflection.Metadata.dll
-C:\Users\Aditi\Desktop\INF370-Adoptify-System\AdoptifySystem\AdoptifySystem\bin\roslyn\vbc.exe
-C:\Users\Aditi\Desktop\INF370-Adoptify-System\AdoptifySystem\AdoptifySystem\bin\roslyn\VBCSCompiler.exe
-C:\Users\Aditi\Desktop\INF370-Adoptify-System\AdoptifySystem\AdoptifySystem\bin\roslyn\VBCSCompiler.exe.config
-C:\Users\Aditi\Desktop\INF370-Adoptify-System\AdoptifySystem\AdoptifySystem\bin\AdoptifySystem.dll.config
-C:\Users\Aditi\Desktop\INF370-Adoptify-System\AdoptifySystem\AdoptifySystem\bin\AdoptifySystem.dll
-C:\Users\Aditi\Desktop\INF370-Adoptify-System\AdoptifySystem\AdoptifySystem\bin\AdoptifySystem.pdb
-C:\Users\Aditi\Desktop\INF370-Adoptify-System\AdoptifySystem\AdoptifySystem\bin\Antlr3.Runtime.dll
-C:\Users\Aditi\Desktop\INF370-Adoptify-System\AdoptifySystem\AdoptifySystem\bin\EntityFramework.dll
-C:\Users\Aditi\Desktop\INF370-Adoptify-System\AdoptifySystem\AdoptifySystem\bin\EntityFramework.SqlServer.dll
-C:\Users\Aditi\Desktop\INF370-Adoptify-System\AdoptifySystem\AdoptifySystem\bin\Google.Authenticator.dll
-C:\Users\Aditi\Desktop\INF370-Adoptify-System\AdoptifySystem\AdoptifySystem\bin\Microsoft.AspNet.Identity.Core.dll
-C:\Users\Aditi\Desktop\INF370-Adoptify-System\AdoptifySystem\AdoptifySystem\bin\Microsoft.AspNet.Identity.EntityFramework.dll
-C:\Users\Aditi\Desktop\INF370-Adoptify-System\AdoptifySystem\AdoptifySystem\bin\Microsoft.AspNet.Identity.Owin.dll
-C:\Users\Aditi\Desktop\INF370-Adoptify-System\AdoptifySystem\AdoptifySystem\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
-C:\Users\Aditi\Desktop\INF370-Adoptify-System\AdoptifySystem\AdoptifySystem\bin\Microsoft.Owin.dll
-C:\Users\Aditi\Desktop\INF370-Adoptify-System\AdoptifySystem\AdoptifySystem\bin\Microsoft.Owin.Host.SystemWeb.dll
-C:\Users\Aditi\Desktop\INF370-Adoptify-System\AdoptifySystem\AdoptifySystem\bin\Microsoft.Owin.Security.Cookies.dll
-C:\Users\Aditi\Desktop\INF370-Adoptify-System\AdoptifySystem\AdoptifySystem\bin\Microsoft.Owin.Security.dll
-C:\Users\Aditi\Desktop\INF370-Adoptify-System\AdoptifySystem\AdoptifySystem\bin\Microsoft.Owin.Security.Facebook.dll
-C:\Users\Aditi\Desktop\INF370-Adoptify-System\AdoptifySystem\AdoptifySystem\bin\Microsoft.Owin.Security.Google.dll
-C:\Users\Aditi\Desktop\INF370-Adoptify-System\AdoptifySystem\AdoptifySystem\bin\Microsoft.Owin.Security.MicrosoftAccount.dll
-C:\Users\Aditi\Desktop\INF370-Adoptify-System\AdoptifySystem\AdoptifySystem\bin\Microsoft.Owin.Security.OAuth.dll
-C:\Users\Aditi\Desktop\INF370-Adoptify-System\AdoptifySystem\AdoptifySystem\bin\Microsoft.Owin.Security.Twitter.dll
-C:\Users\Aditi\Desktop\INF370-Adoptify-System\AdoptifySystem\AdoptifySystem\bin\Microsoft.Web.Infrastructure.dll
-C:\Users\Aditi\Desktop\INF370-Adoptify-System\AdoptifySystem\AdoptifySystem\bin\Newtonsoft.Json.dll
-C:\Users\Aditi\Desktop\INF370-Adoptify-System\AdoptifySystem\AdoptifySystem\bin\Owin.dll
-C:\Users\Aditi\Desktop\INF370-Adoptify-System\AdoptifySystem\AdoptifySystem\bin\System.Net.Http.Formatting.dll
-C:\Users\Aditi\Desktop\INF370-Adoptify-System\AdoptifySystem\AdoptifySystem\bin\System.Web.Helpers.dll
-C:\Users\Aditi\Desktop\INF370-Adoptify-System\AdoptifySystem\AdoptifySystem\bin\System.Web.Http.dll
-C:\Users\Aditi\Desktop\INF370-Adoptify-System\AdoptifySystem\AdoptifySystem\bin\System.Web.Http.WebHost.dll
-C:\Users\Aditi\Desktop\INF370-Adoptify-System\AdoptifySystem\AdoptifySystem\bin\System.Web.Mvc.dll
-C:\Users\Aditi\Desktop\INF370-Adoptify-System\AdoptifySystem\AdoptifySystem\bin\System.Web.Optimization.dll
-C:\Users\Aditi\Desktop\INF370-Adoptify-System\AdoptifySystem\AdoptifySystem\bin\System.Web.Razor.dll
-C:\Users\Aditi\Desktop\INF370-Adoptify-System\AdoptifySystem\AdoptifySystem\bin\System.Web.WebPages.Deployment.dll
-C:\Users\Aditi\Desktop\INF370-Adoptify-System\AdoptifySystem\AdoptifySystem\bin\System.Web.WebPages.dll
-C:\Users\Aditi\Desktop\INF370-Adoptify-System\AdoptifySystem\AdoptifySystem\bin\System.Web.WebPages.Razor.dll
-C:\Users\Aditi\Desktop\INF370-Adoptify-System\AdoptifySystem\AdoptifySystem\bin\WebGrease.dll
-C:\Users\Aditi\Desktop\INF370-Adoptify-System\AdoptifySystem\AdoptifySystem\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
-C:\Users\Aditi\Desktop\INF370-Adoptify-System\AdoptifySystem\AdoptifySystem\bin\System.Web.Helpers.xml
-C:\Users\Aditi\Desktop\INF370-Adoptify-System\AdoptifySystem\AdoptifySystem\bin\System.Web.Mvc.xml
-C:\Users\Aditi\Desktop\INF370-Adoptify-System\AdoptifySystem\AdoptifySystem\bin\System.Web.Razor.xml
-C:\Users\Aditi\Desktop\INF370-Adoptify-System\AdoptifySystem\AdoptifySystem\bin\System.Web.WebPages.xml
-C:\Users\Aditi\Desktop\INF370-Adoptify-System\AdoptifySystem\AdoptifySystem\bin\System.Web.WebPages.Deployment.xml
-C:\Users\Aditi\Desktop\INF370-Adoptify-System\AdoptifySystem\AdoptifySystem\bin\System.Web.WebPages.Razor.xml
-C:\Users\Aditi\Desktop\INF370-Adoptify-System\AdoptifySystem\AdoptifySystem\bin\System.Web.Optimization.xml
-C:\Users\Aditi\Desktop\INF370-Adoptify-System\AdoptifySystem\AdoptifySystem\bin\Antlr3.Runtime.pdb
-C:\Users\Aditi\Desktop\INF370-Adoptify-System\AdoptifySystem\AdoptifySystem\bin\Newtonsoft.Json.xml
-C:\Users\Aditi\Desktop\INF370-Adoptify-System\AdoptifySystem\AdoptifySystem\bin\System.Net.Http.Formatting.xml
-C:\Users\Aditi\Desktop\INF370-Adoptify-System\AdoptifySystem\AdoptifySystem\bin\System.Web.Http.xml
-C:\Users\Aditi\Desktop\INF370-Adoptify-System\AdoptifySystem\AdoptifySystem\bin\System.Web.Http.WebHost.xml
-C:\Users\Aditi\Desktop\INF370-Adoptify-System\AdoptifySystem\AdoptifySystem\bin\EntityFramework.xml
-C:\Users\Aditi\Desktop\INF370-Adoptify-System\AdoptifySystem\AdoptifySystem\bin\EntityFramework.SqlServer.xml
-C:\Users\Aditi\Desktop\INF370-Adoptify-System\AdoptifySystem\AdoptifySystem\bin\Microsoft.AspNet.Identity.Core.xml
-C:\Users\Aditi\Desktop\INF370-Adoptify-System\AdoptifySystem\AdoptifySystem\bin\Microsoft.AspNet.Identity.Owin.xml
-C:\Users\Aditi\Desktop\INF370-Adoptify-System\AdoptifySystem\AdoptifySystem\bin\Microsoft.AspNet.Identity.EntityFramework.xml
-C:\Users\Aditi\Desktop\INF370-Adoptify-System\AdoptifySystem\AdoptifySystem\bin\Microsoft.Owin.xml
-C:\Users\Aditi\Desktop\INF370-Adoptify-System\AdoptifySystem\AdoptifySystem\bin\Microsoft.Owin.Host.SystemWeb.xml
-C:\Users\Aditi\Desktop\INF370-Adoptify-System\AdoptifySystem\AdoptifySystem\bin\Microsoft.Owin.Security.xml
-C:\Users\Aditi\Desktop\INF370-Adoptify-System\AdoptifySystem\AdoptifySystem\bin\Microsoft.Owin.Security.Facebook.xml
-C:\Users\Aditi\Desktop\INF370-Adoptify-System\AdoptifySystem\AdoptifySystem\bin\Microsoft.Owin.Security.Cookies.xml
-C:\Users\Aditi\Desktop\INF370-Adoptify-System\AdoptifySystem\AdoptifySystem\bin\Microsoft.Owin.Security.OAuth.xml
-C:\Users\Aditi\Desktop\INF370-Adoptify-System\AdoptifySystem\AdoptifySystem\bin\Microsoft.Owin.Security.Google.xml
-C:\Users\Aditi\Desktop\INF370-Adoptify-System\AdoptifySystem\AdoptifySystem\bin\Microsoft.Owin.Security.Twitter.xml
-C:\Users\Aditi\Desktop\INF370-Adoptify-System\AdoptifySystem\AdoptifySystem\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
-C:\Users\Aditi\Desktop\INF370-Adoptify-System\AdoptifySystem\AdoptifySystem\obj\Debug\AdoptifySystem.csprojResolveAssemblyReference.cache
-C:\Users\Aditi\Desktop\INF370-Adoptify-System\AdoptifySystem\AdoptifySystem\obj\Debug\AdoptifySystem.dll
-C:\Users\Aditi\Desktop\INF370-Adoptify-System\AdoptifySystem\AdoptifySystem\obj\Debug\AdoptifySystem.pdb
+C:\Users\Nickey\Desktop\370\INF370-Adoptify-System\AdoptifySystem\AdoptifySystem\obj\Debug\AdoptifySystem.csproj.CopyComplete
+C:\Users\Nickey\Desktop\370\INF370-Adoptify-System\AdoptifySystem\AdoptifySystem\obj\Debug\AdoptifySystem.csprojAssemblyReference.cache
