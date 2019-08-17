@@ -91,14 +91,14 @@
 <div class="checkin">
     @if (Model != null)
     {
-        <datalist id="exampleList">
+        <select name="title" id="exampleList">
 
             @foreach (var item in Model.employeelist)
             {
                 <option>@item.Emp_Name @item.Emp_Surname</option>
-                <input id="@item.Emp_Name @item.Emp_Surname" value="@item.Emp_ID" hidden />
+                //<input id="@item.Emp_Name @item.Emp_Surname" value="@item.Emp_ID" hidden />
             }
-        </datalist>
+        </select>
 
 
         <div class="row">

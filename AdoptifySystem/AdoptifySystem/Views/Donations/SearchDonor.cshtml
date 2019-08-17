@@ -7,7 +7,7 @@
         <h1>Donor List</h1>
     </div>
     <h1>@ViewBag.errormessage</h1>
-    @Html.ActionLink("Create New", "AddDonationType", null, new { @style = "color: # fff" }, new { @class = "btn btn-success" })
+    @Html.ActionLink("Create New", "AddDonor", null, new { @style = "color: # fff" }, new { @class = "btn btn-success" })
 
     @using (Html.BeginForm("SearchDonor", "Donations", FormMethod.Get))
     {
@@ -76,7 +76,6 @@
 
                             <button class="btn moreinfo" data-toggle="modal" data-target="#@item.Donor_ID">More info </button> |
                             @Html.ActionLink("Delete", "Delete", new { id = item.Donor_ID }, new { @class = "btn btn-danger" }) |
-                            <input type="button" value="More Info" class="btn moreinfo" data-toggle="modal" data-target="#@item.Donor_ID">
                         </td>
                     </tr>
                     <div class="modal fade" id="@item.Donor_ID" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">

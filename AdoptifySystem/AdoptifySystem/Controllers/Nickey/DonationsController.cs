@@ -1,10 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using AdoptifySystem.Models;
+using AdoptifySystem.Models.nickeymodel;
 
 namespace AdoptifySystem.Controllers
 {
@@ -12,19 +14,62 @@ namespace AdoptifySystem.Controllers
     {
         // GET: Donations
         Wollies_ShelterEntities db = new Wollies_ShelterEntities();
+        public static Flexible flex = new Flexible(); 
         public ActionResult AddDonor()
         {
-            return View();
+            List<Title> titles = new List<Title>();
+            try
+            {
+                titles = db.Titles.ToList();
+            }
+            catch (Exception)
+            {
+
+                return RedirectToAction("Index", "Home");
+            }
+            
+
+            return View(titles);
         }
         [HttpPost]
-        public ActionResult AddDonor(Donor donor)
+        public ActionResult AddDonor(Donor donor,string button)
         {
+            if (button == "Save")
+            {
+                List<Donor> donors = new List<Donor>();
+                donors = db.Donors.ToList();
+                if (donors.Count != 0)
+                {
+                    int count = 0;
+                    foreach (var item in donors)
+                    {
+                        if (item.Donor_Name == donor.Donor_Name && item.Donor_Surname == donor.Donor_Surname && item.Donor_Email == donor.Donor_Email)
+                        {
+                            count++;
+                            ViewBag.errorMessage = "There is a duplicate Donor Already";
+                            return View();
+                        }
 
+                    }
+                    if (count == 0)
+                    {
+                        db.Donors.Add(donor);
+                        db.SaveChanges();
+
+                    }
+                }
+                db.Donors.Add(donor);
+                db.SaveChanges();
+                return View();
+            }
+            else if (button == "Cancel")
+            {
+                return RedirectToAction("Index","Home");
+            }
             return View();
         }
         public ActionResult MaintainDonor(int? id)
         {
-
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -34,7 +79,39 @@ namespace AdoptifySystem.Controllers
             {
                 return HttpNotFound();
             }
-            return View(donor);
+            flex.Titles = db.Titles.ToList();
+            flex.donor = donor;
+            
+            return View(flex);
+        }
+        public ActionResult MaintainDonor(Donor donor,string button)
+        {
+            if (button == "Save")
+            {
+                try
+                {
+                    Donor Donor = db.Donors.Find(donor.Donor_ID);
+                    if (Donor == null)
+                    {
+                        return HttpNotFound();
+                    }
+                    else
+                    {
+                        db.Entry(Donor).CurrentValues.SetValues(donor);
+                        db.SaveChanges();
+                    }
+                }
+                catch (Exception e)
+                {
+                    return RedirectToAction("MaintainDonor", "Donations");
+                }
+            }
+            else if (button == "Cancel")
+            {
+
+                return RedirectToAction("Index", "Home");
+            }
+            return RedirectToAction("Index", "Home");
         }
         public ActionResult AddDonation()
         {
@@ -160,10 +237,34 @@ namespace AdoptifySystem.Controllers
             return View(donation_Type);
         }
         [HttpPost]
-        public ActionResult MaintainDonationType(Donation_Type Donationtype)
+        public ActionResult MaintainDonationType(Donation_Type Donationtype,string button)
         {
+            if (button == "Save")
+            {
+                try
+                {
+                    Donation_Type donation_Type = db.Donation_Type.Find(Donationtype.Donation_Type_ID);
+                    if (donation_Type == null)
+                    {
+                        return HttpNotFound();
+                    }
+                    else
+                    {
+                        db.Entry(donation_Type).CurrentValues.SetValues(Donationtype);
+                        db.SaveChanges();
+                    }
+                }
+                catch(Exception e)
+                {
+                    return RedirectToAction("MaintainDonationType","Donations");
+                }
+            }
+            else if (button == "Cancel")
+            {
 
-            return View();
+                return RedirectToAction("Index", "Home");
+            }
+            return RedirectToAction("Index", "Home");
         }
     }
 }

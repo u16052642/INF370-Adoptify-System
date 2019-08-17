@@ -1,76 +1,97 @@
-﻿@model AdoptifySystem.Stock
+﻿@model List<AdoptifySystem.Stock_Type>
 
 @{
-    ViewBag.Title = "AddStock";
+    ViewBag.Title = "Add Stock";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>AddStock</h2>
-
-@using (Html.BeginForm()) 
+<h2>Add Stock</h2>
+@using (Html.BeginForm())
 {
-    @Html.AntiForgeryToken()
-    
-    <div class="form-horizontal">
-        <h4>Stock</h4>
-        <hr />
-        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-        <div class="form-group">
-            @Html.LabelFor(model => model.Stock_Name, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Stock_Name, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Stock_Name, "", new { @class = "text-danger" })
+
+    <label></label>
+    if (Model != null)
+    {
+        <select name="Stock_Type" id="exampleList">
+
+            @foreach (var item in Model)
+            {
+                <option value="@item.Stock_Type_ID">@item.Stock_Type_Name</option>
+                @*<input id="@item.Emp_Name @item.Emp_Surname" value="@item.Emp_ID" hidden />*@
+            }
+        </select>
+        <br />
+        <h1>Food Detail</h1>
+        <label>Food Packaging Type</label>
+        <div id="RadioFood_Packaging_Type">
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="Food_Packaging_Type" id="exampleRadios1" value="option1" checked>
+                <label class="form-check-label" for="exampleRadios1">
+                    Tin
+                </label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="Food_Packaging_Type" id="exampleRadios1" value="option1" checked>
+                <label class="form-check-label" for="exampleRadios1">
+                    Bag
+                </label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="Food_Packaging_Type" id="exampleRadios1" value="option1" checked>
+                <label class="form-check-label" for="exampleRadios1">
+                    Biscuits
+                </label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="Food_Packaging_Type" id="exampleRadios1" value="option1" checked>
+                <label class="form-check-label" for="exampleRadios1">
+                    Treats
+                </label>
             </div>
         </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.Stock_Quantity, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Stock_Quantity, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Stock_Quantity, "", new { @class = "text-danger" })
+        <label>Unit Type</label>
+        <div id="RadioUnit_Type">
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="Unit_Type" id="exampleRadios1" value="option1" checked>
+                <label class="form-check-label" for="exampleRadios1">
+                    g
+                </label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="Unit_Type" id="exampleRadios1" value="option1" checked>
+                <label class="form-check-label" for="exampleRadios1">
+                    KG
+                </label>
             </div>
         </div>
-
         <div class="form-group">
-            @Html.LabelFor(model => model.Stock_Description, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Stock_Description, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Stock_Description, "", new { @class = "text-danger" })
-            </div>
+            <label for="exampleInputEmail1">Units:</label>
+            <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
+            <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
         </div>
-
-        @*<div class="form-group">
-            @Html.LabelFor(model => model.Stock_Type_ID, "Stock_Type_ID", htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.DropDownList("Stock_Type_ID", null, htmlAttributes: new { @class = "form-control" })
-                @Html.ValidationMessageFor(model => model.Stock_Type_ID, "", new { @class = "text-danger" })
-            </div>
+        <h1>Stock Detail</h1>
+        <div class="form-group">
+            <label for="exampleInputEmail1">Number of Items:</label>
+            <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
+            <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
+            <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
         </div>
-
         <div class="form-group">
-            @Html.LabelFor(model => model.Packaging_Type_ID, "Packaging_Type_ID", htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.DropDownList("Packaging_Type_ID", null, htmlAttributes: new { @class = "form-control" })
-                @Html.ValidationMessageFor(model => model.Packaging_Type_ID, "", new { @class = "text-danger" })
-            </div>
+            <label for="exampleInputEmail1">Date:</label>
+            <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
+            <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
         </div>
-
         <div class="form-group">
-            @Html.LabelFor(model => model.Unit_Type_ID, "Unit_Type_ID", htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.DropDownList("Unit_Type_ID", null, htmlAttributes: new { @class = "form-control" })
-                @Html.ValidationMessageFor(model => model.Unit_Type_ID, "", new { @class = "text-danger" })
-            </div>
-        </div>*@
+            <label for="exampleInputEmail1">Description:</label>
+            <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
+            <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+        </div>
+    }
 
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Create" class="btn btn-default" />
-            </div>
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <button type="submit" name="button" value="Cancel" class="btn btn-warning">Cancel</button>
+            <button type="submit" name="button" value="Save" class=" btn btn-success float-right">Save</button>
         </div>
     </div>
 }
-
-<div>
-    @Html.ActionLink("Back to List", "Index")
-</div>

@@ -72,7 +72,6 @@
 
                             <button class="btn moreinfo" data-toggle="modal" data-target="#@item.Donation_Line_ID">More info </button> |
                             @Html.ActionLink("Delete", "Delete", new { id = item.Donation_Line_ID }, new { @class = "btn btn-danger" }) |
-                            <input type="button" value="More Info asdfsfsd" class="btn moreinfo" data-toggle="modal" data-target="#@item.Donation_Line_ID">
                         </td>
                     </tr>
                     <div class="modal fade" id="@item.Donation_Line_ID" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
@@ -87,7 +86,7 @@
                                 <div class="modal-body">
 
                                     <span class="value">ID:</span>
-                                    @Html.DisplayFor(modelItem => item.Donation_Type) <br />
+                                    @Html.DisplayFor(modelItem => item.Donation_ID) <br />
                                     <span class="value">Donation Type:</span>
                                     @Html.DisplayFor(modelItem => item.Donation_Type) <br />
                                     <span class="value">Quantity:</span>

@@ -67,8 +67,7 @@
                             @Html.ActionLink("Edit", "MaintainDonationType", new { id = item.Donation_Type_ID }, new { @class = "btn btn-warning" }) |
 
                             <button class="btn moreinfo" data-toggle="modal" data-target="#@item.Donation_Type_ID">More info </button> |
-                            @Html.ActionLink("Delete", "Delete", new { id = item.Donation_Type_ID }, new { @class = "btn btn-danger" }) |
-                            <input type="button" value="More Info asdfsfsd" class="btn moreinfo" data-toggle="modal" data-target="#@item.Donation_Type_ID">
+                            @Html.ActionLink("Delete", "Delete", new { id = item.Donation_Type_ID }, new { @class = "btn btn-danger" }) |                            
                         </td>
                     </tr>
                     <div class="modal fade" id="@item.Donation_Type_ID" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">

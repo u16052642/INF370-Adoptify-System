@@ -1,7 +1,7 @@
-﻿@model AdoptifySystem.Donor
+﻿@model List<AdoptifySystem.Title>
 
 @{
-    ViewBag.Title = "AddDonor";
+    ViewBag.Title = "Add Donor";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
@@ -9,30 +9,47 @@
 
 @using (Html.BeginForm())
 {
-<div class="row">
-    <div class="col-lg-12">
-        <div class="input-group">
-            <label>Text1</label>
-            <input type="text" value="" />&nbsp; @*/* if you want space between text and label use &nbsp;*/*@
-            <label>Text2</label>&nbsp;
-            <input type="text" value="" />&nbsp;
-            <label>Text3</label>&nbsp;
-            <input type="text" value="" />&nbsp;
-            <label>Text4</label>&nbsp;
-            <input type="text" value="" />&nbsp;
+    if (Model != null)
+    {
+        using (Html.BeginForm())
+        {
+            <select name="Title_ID" id="exampleList">
 
-        </div><br />
-        <div class="input-group">
-            <label>Text1</label>
-            <input type="text" value="" />
-            <label>Text2</label>
-            <input type="text" value="" />
-            <label>Text3</label>
-            <input type="text" value="" />
-            <label>Text4</label>
-            <input type="text" value="" />
-
-        </div>
-    </div>
-</div>
+                @foreach (var item in Model)
+                {
+                    <option value="@item.Title_ID">@item.Title_Description</option>
+                    @*<input id="@item.Emp_Name @item.Emp_Surname" value="@item.Emp_ID" hidden />*@
+                }
+            </select>
+            <br />
+            <label>
+                Donor Name
+            </label>
+            <br />
+            <input name="Donor_Name" type="text" />
+            <br />
+            <label>
+                Donor Surname
+            </label>
+            <br />
+            <input name="Donor_Surname" type="text" />
+            <br />
+            <label>
+                Donor Email
+            </label>
+            <br />
+            <input name="Donor_Email" type="text" />
+            <br />
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <button type="submit" name="button" value="Cancel" class="btn btn-warning">Cancel</button>
+                    <button type="submit" name="button" value="Save" class=" btn btn-success float-right">Save</button>
+                </div>
+            </div>
+        }
+    }
+    else
+    {
+        <h1>the Title is empty</h1>
+    }
 }

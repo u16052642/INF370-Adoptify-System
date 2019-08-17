@@ -13,7 +13,19 @@ namespace AdoptifySystem.Controllers
         Wollies_ShelterEntities db = new Wollies_ShelterEntities();
         public ActionResult AddStock()
         {
-            return View();
+            List<Stock_Type> Stock_Types = new List<Stock_Type>();
+            try
+            {
+                Stock_Types = db.Stock_Type.ToList();
+            }
+            catch (Exception)
+            {
+
+                return RedirectToAction("Index", "Home");
+            }
+
+
+            return View(Stock_Types);
         }
         [HttpPost]
         public ActionResult AddStock(Stock stock, string button)
@@ -34,9 +46,34 @@ namespace AdoptifySystem.Controllers
             return View();
         }
         [HttpPost]
-        public ActionResult MaintainStock(Stock stock, string button)
+        public ActionResult MaintainStock(Stock stock2, string button)
         {
-            return View();
+            if (button == "Save")
+            {
+                try
+                {
+                    Stock stock1 = db.Stocks.Find(stock2.Stock_ID);
+                    if (stock1 == null)
+                    {
+                        return HttpNotFound();
+                    }
+                    else
+                    {
+                        db.Entry(stock1).CurrentValues.SetValues(stock2);
+                        db.SaveChanges();
+                    }
+                }
+                catch (Exception e)
+                {
+                    return RedirectToAction("MaintainStock", "Stock");
+                }
+            }
+            else if (button == "Cancel")
+            {
+
+                return RedirectToAction("Index", "Home");
+            }
+            return RedirectToAction("Index", "Home");
         }
 
         public ActionResult CaptureStockTake()
@@ -115,10 +152,6 @@ namespace AdoptifySystem.Controllers
         {
             return View();
         }
-        public ActionResult AddDonationType()
-        {
-            return View();
-        }
         [HttpGet]
         public ActionResult SearchStockType()
         {
@@ -154,10 +187,34 @@ namespace AdoptifySystem.Controllers
             return View(stock_Type);
         }
         [HttpPost]
-        public ActionResult MaintainStockType(Stock_Type stock_Type)
+        public ActionResult MaintainStockType(Stock_Type stock_Type,string button)
         {
+            if (button == "Save")
+            {
+                try
+                {
+                    Stock_Type Stock_Type = db.Stock_Type.Find(stock_Type.Stock_Type_ID);
+                    if (Stock_Type == null)
+                    {
+                        return HttpNotFound();
+                    }
+                    else
+                    {
+                        db.Entry(Stock_Type).CurrentValues.SetValues(stock_Type);
+                        db.SaveChanges();
+                    }
+                }
+                catch (Exception e)
+                {
+                    return RedirectToAction("MaintainStockType", "Stock");
+                }
+            }
+            else if (button == "Cancel")
+            {
 
-            return View();
+                return RedirectToAction("Index", "Home");
+            }
+            return RedirectToAction("Index", "Home");
         }
     }
 }
