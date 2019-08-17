@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,6 +15,8 @@ namespace AdoptifySystem.Models.nickeymodel
         public List<Unit_Type> unit_Types { get; set; }
         public Donor donor { get; set; }
         public List<Title> Titles { get; set; }
+        public List<Stock> Stocklist { get; set; }
         public List<Stock_Type> Stock_Types { get; set; }
+        public List<Donation_Line> adddonationlist { get; set; }
     }
 }

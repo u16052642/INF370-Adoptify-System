@@ -9,7 +9,7 @@
     <h1>@ViewBag.errormessage</h1>
     @Html.ActionLink("Create New", "AddDonationType", null, new { @style = "color: # fff" }, new { @class = "btn btn-success" })
 
-    @using (Html.BeginForm("Search", "Donations", FormMethod.Get))
+    @using (Html.BeginForm("SearchDonationType", "Donations", FormMethod.Get))
     {
         <div class="row">
             <div class="col-md-5">
@@ -23,6 +23,7 @@
                 <button type="submit" value="Search" class="btn btn-primary">Search</button>
             </div>
         </div>
+    }
         <br />
         <table class="table table-bordered">
             <tr class="thead-light">

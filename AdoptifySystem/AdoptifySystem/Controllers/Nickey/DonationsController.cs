@@ -115,7 +115,92 @@ namespace AdoptifySystem.Controllers
         }
         public ActionResult AddDonation()
         {
-            return View();
+            ViewBag.errormessage = "";
+            
+            try
+            {
+                flex.Stocklist = db.Stocks.ToList();
+            }
+            catch (Exception e)
+            {
+
+                ViewBag.errormessage = "";
+            }
+            return View(flex);
+        }
+        [HttpPost]
+        public ActionResult Addmoneytolist(Donation_Line donation_line,string[] checkeds, string button)
+        {
+            ViewBag.errormessage = "";
+            List<Donation_Line> temp = new List<Donation_Line>();
+
+            if (button == "Select Donor")
+            {
+                try
+                {
+                    flex.donor = db.Donors.Find(donation_line.Donation.Donor.Donor_ID);
+                }
+                catch (Exception e)
+                {
+
+                    ViewBag.errormessage = "";
+                }
+                return RedirectToAction("AddDonation");
+            }
+
+            if (button == "Add Money")
+            {
+                try
+                {
+                    flex.Stocklist = db.Stocks.ToList();
+                }
+                catch (Exception e)
+                {
+
+                    ViewBag.errormessage = "";
+                }
+                return RedirectToAction("AddDonation");
+            }
+            if (button == "Add Stock")
+            {
+                try
+                {
+                    flex.Stocklist = db.Stocks.ToList();
+                }
+                catch (Exception e)
+                {
+
+                    ViewBag.errormessage = "";
+                }
+                return RedirectToAction("AddDonation");
+            }
+            if (button == "Save")
+            {
+                try
+                {
+                    flex.Stocklist = db.Stocks.ToList();
+                }
+                catch (Exception e)
+                {
+
+                    ViewBag.errormessage = "";
+                }
+                return RedirectToAction("AddDonation");
+            }
+            if (button == "Cancel")
+            {
+                try
+                {
+                    flex.Stocklist = db.Stocks.ToList();
+                }
+                catch (Exception e)
+                {
+
+                    ViewBag.errormessage = "";
+                }
+                return RedirectToAction("AddDonation");
+            }
+            return RedirectToAction("AddDonation");
         }
         public ActionResult SearchDonor()
         {
@@ -139,7 +224,19 @@ namespace AdoptifySystem.Controllers
         }
         public ActionResult SearchDonation()
         {
-            return View();
+            List<Donation_Line> Donation_Lines = new List<Donation_Line>();
+            try
+            {
+                Donation_Lines = db.Donation_Line.ToList();
+            }
+            catch (Exception)
+            {
+
+                return RedirectToAction("Index", "Home");
+            }
+
+
+            return View(Donation_Lines);
         }
 
         public ActionResult AddDonationType()
