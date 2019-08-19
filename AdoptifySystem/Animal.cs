@@ -21,6 +21,7 @@ namespace AdoptifySystem
             this.Animal_Kennel_History = new HashSet<Animal_Kennel_History>();
             this.CrossBreeds = new HashSet<CrossBreed>();
             this.Foster_Care = new HashSet<Foster_Care>();
+            this.Mecidal_Card = new HashSet<Mecidal_Card>();
             this.Microchips = new HashSet<Microchip>();
             this.Vet_Appointment_Line = new HashSet<Vet_Appointment_Line>();
         }
@@ -28,6 +29,8 @@ namespace AdoptifySystem
         public int Animal_ID { get; set; }
         public string Animal_Image { get; set; }
         public string Animal_Name { get; set; }
+        public Nullable<int> Animal_Type_ID { get; set; }
+        public Nullable<int> Animal_Breed_ID { get; set; }
         public string Animal_Description { get; set; }
         public string Animal_Gender { get; set; }
         public Nullable<int> Animal_Age { get; set; }
@@ -41,12 +44,16 @@ namespace AdoptifySystem
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Adoption> Adoptions { get; set; }
         public virtual Animal_Status Animal_Status { get; set; }
+        public virtual Animal_Type Animal_Type { get; set; }
+        public virtual Animal_Breed Animal_Breed { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Animal_Kennel_History> Animal_Kennel_History { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<CrossBreed> CrossBreeds { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Foster_Care> Foster_Care { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Mecidal_Card> Mecidal_Card { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Microchip> Microchips { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

@@ -21,9 +21,9 @@ namespace AdoptifySystem
         }
     
         public int Vet_Appoint_Line_ID { get; set; }
-        public Nullable<int> Vet_Appoint_Line_Status { get; set; }
-        public Nullable<int> Animal_ID { get; set; }
-        public Nullable<int> Vet_Appointment_ID { get; set; }
+        public int Vet_Appoint_Line_Status { get; set; }
+        public int Animal_ID { get; set; }
+        public int Vet_Appointment_ID { get; set; }
     
         public virtual Animal Animal { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

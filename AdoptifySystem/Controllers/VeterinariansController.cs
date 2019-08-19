@@ -17,17 +17,23 @@ namespace AdoptifySystem.Controllers
         // GET: Veterinarians
         public ActionResult Index(string searchBy, string search)
         {
-            if (searchBy == "Vet_Name")
-                return View(db.Veterinarians.Where(x => x.Vet_Name == search || search == null).ToList());
-            else
-                return View(db.Veterinarians.Where(x => x.Vet_Address == search || search == null).ToList());
-
+            try {
+                if (searchBy == "Vet_Name")
+                    return View(db.Veterinarians.Where(x => x.Vet_Name == search || search == null).ToList());
+                else
+                    return View(db.Veterinarians.Where(x => x.Vet_Address == search || search == null).ToList());
+            }
+            catch (Exception err)
+            {
+                ViewBag.err = err.Message;
+            }
             return View(db.Veterinarians.ToList());
         }
 
         // GET: Veterinarians/Details/5
         public ActionResult Details(int? id)
         {
+
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -53,13 +59,24 @@ namespace AdoptifySystem.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "Vet_ID,Vet_Name,Vet_Emial,Vet_Tel,Vet_Address")] Veterinarian veterinarian)
         {
+            
             if (ModelState.IsValid)
             {
-                db.Veterinarians.Add(veterinarian);
-                db.SaveChanges();
-                return RedirectToAction("Index");
-            }
+                if (db.Veterinarians.Any(p => p.Vet_Name == veterinarian.Vet_Name)) //duplicate data
+                {
+                    ViewBag.Message = "Vet already exists";
+                    /*ModelState.AddModelError("txtName", "Vet Name already exists.")*/
+                    
+                }
 
+                else {
+                    db.Veterinarians.Add(veterinarian);
+                    db.SaveChanges();
+                    ViewBag.Message = "Success";
+                    return RedirectToAction("Index");
+                }
+            }
+          
             return View(veterinarian);
         }
 
@@ -87,9 +104,18 @@ namespace AdoptifySystem.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Entry(veterinarian).State = EntityState.Modified;
-                db.SaveChanges();
-                return RedirectToAction("Index");
+                if (db.Veterinarians.Any(p => p.Vet_Name == veterinarian.Vet_Name)) //duplicate data
+                {
+                    ViewBag.Message = "Vet already exists";
+                    /*ModelState.AddModelError("txtName", "Vet Name already exists.")*/
+
+                }
+
+                else {
+                    db.Entry(veterinarian).State = EntityState.Modified;
+                    db.SaveChanges();
+                    return RedirectToAction("Index");
+                }
             }
             return View(veterinarian);
         }

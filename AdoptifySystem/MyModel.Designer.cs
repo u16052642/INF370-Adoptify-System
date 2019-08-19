@@ -1,4 +1,4 @@
-﻿// T4 code generation is enabled for model 'C:\Users\Divin\Desktop\School 2019\INF 370\Adoptify System Program\INF370-Adoptify System final (del5)\AdoptifySystem\AdoptifySystem\MyModel.edmx'. 
+﻿// T4 code generation is enabled for model 'C:\Users\Divin\Desktop\School 2019\INF 370\Adoptify System Program\backup revert\AdoptifySystem\AdoptifySystem\MyModel.edmx'. 
 // To enable legacy code generation, change the value of the 'Code Generation Strategy' designer
 // property to 'Legacy ObjectContext'. This property is available in the Properties Window when the model
 // is open in the designer.

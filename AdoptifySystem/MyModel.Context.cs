@@ -56,6 +56,7 @@ namespace AdoptifySystem
         public virtual DbSet<Foster_Care_Parent> Foster_Care_Parent { get; set; }
         public virtual DbSet<HomeCheck> HomeChecks { get; set; }
         public virtual DbSet<Kennel> Kennels { get; set; }
+        public virtual DbSet<Mecidal_Card> Mecidal_Card { get; set; }
         public virtual DbSet<Microchip> Microchips { get; set; }
         public virtual DbSet<Packaging_Type> Packaging_Type { get; set; }
         public virtual DbSet<Payment> Payments { get; set; }
@@ -70,6 +71,8 @@ namespace AdoptifySystem
         public virtual DbSet<UserRole> UserRoles { get; set; }
         public virtual DbSet<Vet_Appointment> Vet_Appointment { get; set; }
         public virtual DbSet<Vet_Appointment_Line> Vet_Appointment_Line { get; set; }
+        public virtual DbSet<Vet_Appointment_Master> Vet_Appointment_Master { get; set; }
+        public virtual DbSet<VetAppReason> VetAppReasons { get; set; }
         public virtual DbSet<Veterinarian> Veterinarians { get; set; }
         public virtual DbSet<Volunteer> Volunteers { get; set; }
         public virtual DbSet<Volunteer_Hours> Volunteer_Hours { get; set; }

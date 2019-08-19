@@ -17,7 +17,7 @@ namespace AdoptifySystem
         public int EventID { get; set; }
         public string Subject { get; set; }
         public string Description { get; set; }
-        public System.DateTime Start { get; set; }
+        public Nullable<System.DateTime> Start { get; set; }
         public Nullable<System.DateTime> EventEnd { get; set; }
         public string ThemeColour { get; set; }
         public Nullable<bool> IsFullDay { get; set; }

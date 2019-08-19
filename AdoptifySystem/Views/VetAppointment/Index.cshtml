@@ -1,0 +1,94 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Vet Appointment</h2>
+
+<div class="container">
+    <div class="master">
+        <h2>Appointment Details</h2>
+        <table class="table table-responsive">
+            <tr>
+                <td>Vet</td>
+                <td>
+                    <select id="VetName" class="vn form-control" onchange="LoadProduct(this)">
+                        <option>Select Vet</option>
+                    </select>
+                </td>
+                <td>Appointment Date</td>
+                <td>
+                    <input type="date" id="vetDate" class="form-control" />
+                    <span class="error">Valid appointment date required (ex: MM-dd-yyyy)</span>
+                </td>
+            </tr>
+            <tr>
+                <td>Description</td>
+                <td colspan="3">
+                    <textarea id="description" class="form-control"></textarea>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="details">
+        <h2>
+            Animal Details
+        </h2>
+        <table class="table table-responsive">
+            <tr>
+                <td>Animal</td>
+                <td>Reason for Appointment</td>
+                <td>&nbsp;</td>
+            </tr>
+            <tr class="mycontainer" id="mainrow">
+                <td>
+                    <select id="animal" class="animal form-control" onchange="LoadProduct(this)">
+                        <option>Select Animal</option>
+                    </select>
+                    <span class="error"></span>
+                </td>
+                <td>
+                    <select id="reason" class="reason form-control">
+                        <option>Select Reason</option>
+                    </select>
+                    <span class="error"></span>
+                </td>
+            
+                <td>
+                    <input type="button" id="add" value="add" style="width:80px" class="btn btn-success glyphicon glyphicon-plus"  />
+                </td>
+            </tr>
+        </table>
+        <div id="vetItems">
+            <table class="table table-responsive" id="vetAppItems"></table>
+            <span id="vetItemError" style="color:red"></span>
+        </div>
+        <div style="padding:10px 0; text-align:right">
+            <input id="submit" type="button" value="Save Order" class="btn btn-warning  glyphicon glyphicon-floppy-disk" style="padding:10px 20px" />
+        </div>
+    </div>
+</div>
+<link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+<link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css" />
+<script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+<script src="~/Scripts/myScripts.js"></script>
+<script type="text/javascript">
+    $(function () {
+        $('#vetDate').datepicker({
+            dateFormat: 'mm-dd-yy'
+        })
+    })
+</script>
+<style>
+    span.error {
+        display: block;
+        visibility: hidden;
+        color: red;
+        font-size: 90%;
+    }
+
+    tr.error {
+        background-color: rgba(255,0,0,0.35);
+    }
+</style>

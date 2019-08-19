@@ -99,13 +99,15 @@
           <Property Name="Animal_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Animal_Image" Type="varchar(max)" />
           <Property Name="Animal_Name" Type="varchar" MaxLength="150" />
+          <Property Name="Animal_Type_ID" Type="int" />
+          <Property Name="Animal_Breed_ID" Type="int" />
           <Property Name="Animal_Description" Type="varchar" MaxLength="200" />
           <Property Name="Animal_Gender" Type="varchar" MaxLength="50" />
           <Property Name="Animal_Age" Type="int" />
           <Property Name="Animal_Sterilization" Type="bit" />
           <Property Name="Animal_Castration" Type="bit" />
           <Property Name="Animal_Size" Type="varchar" MaxLength="10" />
-          <Property Name="Animal_Entry_Date" Type="datetime" />
+          <Property Name="Animal_Entry_Date" Type="date" />
           <Property Name="Animal_Coat" Type="varchar" MaxLength="100" />
           <Property Name="Animal_Status_ID" Type="int" />
         </EntityType>
@@ -253,6 +255,7 @@
           <Property Name="Emp_Date_Employed" Type="date" />
           <Property Name="Title_ID" Type="int" />
           <Property Name="Emp_Type_ID" Type="int" />
+          <Property Name="Employee_Status_ID" Type="int" />
         </EntityType>
         <EntityType Name="Employee_Status">
           <Key>
@@ -288,9 +291,9 @@
             <PropertyRef Name="EventID" />
           </Key>
           <Property Name="EventID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Subject" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="Subject" Type="nvarchar" MaxLength="100" />
           <Property Name="Description" Type="nvarchar" MaxLength="300" />
-          <Property Name="Start" Type="datetime" Nullable="false" />
+          <Property Name="Start" Type="datetime" />
           <Property Name="EventEnd" Type="datetime" />
           <Property Name="ThemeColour" Type="nchar" MaxLength="10" />
           <Property Name="IsFullDay" Type="bit" />
@@ -347,6 +350,19 @@
           <Property Name="Kennel_Name" Type="nvarchar" MaxLength="200" />
           <Property Name="Kennel_Number" Type="int" />
           <Property Name="Kennel_Capacity" Type="int" />
+        </EntityType>
+        <EntityType Name="Mecidal_Card">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Animal_ID" Type="int" Nullable="false" />
+          <Property Name="Vet_Appointment_ID" Type="int" Nullable="false" />
+          <Property Name="Diagnosis Details" Type="nvarchar(max)" />
+          <Property Name="Arrival from Vet" Type="date" />
+          <Property Name="Next Appointment Date " Type="date" />
+          <Property Name="MedicalCard" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Animal Treatment" Type="bit" />
         </EntityType>
         <EntityType Name="Microchip">
           <Key>
@@ -440,8 +456,9 @@
             <PropertyRef Name="UserID" />
           </Key>
           <Property Name="UserID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Username" Type="nvarchar" MaxLength="150" />
-          <Property Name="Emp_ID" Type="int" />
+          <Property Name="Username" Type="nvarchar" MaxLength="150" Nullable="false" />
+          <Property Name="Password" Type="nvarchar" MaxLength="150" Nullable="false" />
+          <Property Name="Emp_ID" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="UserRole">
           <Key>
@@ -456,16 +473,34 @@
             <PropertyRef Name="Vet_Appointment_ID" />
           </Key>
           <Property Name="Vet_Appointment_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Vet_ID" Type="int" />
+          <Property Name="Vet_Appoint_Line_ID" Type="int" />
+          <Property Name="VetAppReasonsID" Type="int" />
         </EntityType>
         <EntityType Name="Vet_Appointment_Line">
           <Key>
             <PropertyRef Name="Vet_Appoint_Line_ID" />
           </Key>
           <Property Name="Vet_Appoint_Line_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Vet_Appoint_Line_Status" Type="int" />
-          <Property Name="Animal_ID" Type="int" />
-          <Property Name="Vet_Appointment_ID" Type="int" />
+          <Property Name="Vet_Appoint_Line_Status" Type="int" Nullable="false" />
+          <Property Name="Animal_ID" Type="int" Nullable="false" />
+          <Property Name="Vet_Appointment_ID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Vet_Appointment_Master">
+          <Key>
+            <PropertyRef Name="Vet_Appoint_Line_ID" />
+          </Key>
+          <Property Name="Vet_Appoint_Line_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Vet_ID" Type="int" Nullable="false" />
+          <Property Name="Appointment Date" Type="datetime" Nullable="false" />
+          <Property Name="Description" Type="nvarchar" MaxLength="200" />
+        </EntityType>
+        <EntityType Name="VetAppReasons">
+          <Key>
+            <PropertyRef Name="VetAppReasonsID" />
+          </Key>
+          <Property Name="VetAppReasonsID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Animal_Type_ID" Type="int" />
+          <Property Name="Reason" Type="varchar(max)" />
         </EntityType>
         <EntityType Name="Veterinarian">
           <Key>
@@ -615,6 +650,30 @@
             </Principal>
             <Dependent Role="Animal">
               <PropertyRef Name="Animal_Status_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fkani1">
+          <End Role="Animal_Type" Type="Self.Animal_Type" Multiplicity="0..1" />
+          <End Role="Animal" Type="Self.Animal" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Animal_Type">
+              <PropertyRef Name="Animal_Type_ID" />
+            </Principal>
+            <Dependent Role="Animal">
+              <PropertyRef Name="Animal_Type_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fkani2">
+          <End Role="Animal_Breed" Type="Self.Animal_Breed" Multiplicity="0..1" />
+          <End Role="Animal" Type="Self.Animal" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Animal_Breed">
+              <PropertyRef Name="Animal_Breed_ID" />
+            </Principal>
+            <Dependent Role="Animal">
+              <PropertyRef Name="Animal_Breed_ID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -822,6 +881,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="fkemp2">
+          <End Role="Employee_Status" Type="Self.Employee_Status" Multiplicity="0..1" />
+          <End Role="Employee" Type="Self.Employee" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employee_Status">
+              <PropertyRef Name="Employee_Status_ID" />
+            </Principal>
+            <Dependent Role="Employee">
+              <PropertyRef Name="Employee_Status_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="fkempk">
           <End Role="Employee" Type="Self.Employee" Multiplicity="0..1" />
           <End Role="Emp_Kennel" Type="Self.Emp_Kennel" Multiplicity="*" />
@@ -906,6 +977,30 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="fkmedcard">
+          <End Role="Animal" Type="Self.Animal" Multiplicity="1" />
+          <End Role="Mecidal_Card" Type="Self.Mecidal_Card" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Animal">
+              <PropertyRef Name="Animal_ID" />
+            </Principal>
+            <Dependent Role="Mecidal_Card">
+              <PropertyRef Name="Animal_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fkmedcard1">
+          <End Role="Vet_Appointment" Type="Self.Vet_Appointment" Multiplicity="1" />
+          <End Role="Mecidal_Card" Type="Self.Mecidal_Card" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Vet_Appointment">
+              <PropertyRef Name="Vet_Appointment_ID" />
+            </Principal>
+            <Dependent Role="Mecidal_Card">
+              <PropertyRef Name="Vet_Appointment_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="fkmicro">
           <End Role="Animal" Type="Self.Animal" Multiplicity="0..1" />
           <End Role="Microchip" Type="Self.Microchip" Multiplicity="*" />
@@ -979,7 +1074,7 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="fkuser">
-          <End Role="Employee" Type="Self.Employee" Multiplicity="0..1" />
+          <End Role="Employee" Type="Self.Employee" Multiplicity="1" />
           <End Role="User_" Type="Self.User_" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Employee">
@@ -1014,20 +1109,32 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="fkvetap">
-          <End Role="Veterinarian" Type="Self.Veterinarian" Multiplicity="0..1" />
+        <Association Name="fkvetap2">
+          <End Role="Vet_Appointment_Master" Type="Self.Vet_Appointment_Master" Multiplicity="0..1" />
           <End Role="Vet_Appointment" Type="Self.Vet_Appointment" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="Veterinarian">
-              <PropertyRef Name="Vet_ID" />
+            <Principal Role="Vet_Appointment_Master">
+              <PropertyRef Name="Vet_Appoint_Line_ID" />
             </Principal>
             <Dependent Role="Vet_Appointment">
-              <PropertyRef Name="Vet_ID" />
+              <PropertyRef Name="Vet_Appoint_Line_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fkvetap3">
+          <End Role="VetAppReasons" Type="Self.VetAppReasons" Multiplicity="0..1" />
+          <End Role="Vet_Appointment" Type="Self.Vet_Appointment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="VetAppReasons">
+              <PropertyRef Name="VetAppReasonsID" />
+            </Principal>
+            <Dependent Role="Vet_Appointment">
+              <PropertyRef Name="VetAppReasonsID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
         <Association Name="fkvetapl">
-          <End Role="Animal" Type="Self.Animal" Multiplicity="0..1" />
+          <End Role="Animal" Type="Self.Animal" Multiplicity="1" />
           <End Role="Vet_Appointment_Line" Type="Self.Vet_Appointment_Line" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Animal">
@@ -1039,7 +1146,7 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="fkvetapl1">
-          <End Role="Vet_Appointment" Type="Self.Vet_Appointment" Multiplicity="0..1" />
+          <End Role="Vet_Appointment" Type="Self.Vet_Appointment" Multiplicity="1" />
           <End Role="Vet_Appointment_Line" Type="Self.Vet_Appointment_Line" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Vet_Appointment">
@@ -1047,6 +1154,30 @@
             </Principal>
             <Dependent Role="Vet_Appointment_Line">
               <PropertyRef Name="Vet_Appointment_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fkvetapl3">
+          <End Role="Veterinarian" Type="Self.Veterinarian" Multiplicity="1" />
+          <End Role="Vet_Appointment_Master" Type="Self.Vet_Appointment_Master" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Veterinarian">
+              <PropertyRef Name="Vet_ID" />
+            </Principal>
+            <Dependent Role="Vet_Appointment_Master">
+              <PropertyRef Name="Vet_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fkvetreasonl">
+          <End Role="Animal_Type" Type="Self.Animal_Type" Multiplicity="0..1" />
+          <End Role="VetAppReasons" Type="Self.VetAppReasons" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Animal_Type">
+              <PropertyRef Name="Animal_Type_ID" />
+            </Principal>
+            <Dependent Role="VetAppReasons">
+              <PropertyRef Name="Animal_Type_ID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -1118,6 +1249,7 @@
           <EntitySet Name="Foster_Care_Parent" EntityType="Self.Foster_Care_Parent" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="HomeCheck" EntityType="Self.HomeCheck" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Kennel" EntityType="Self.Kennel" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Mecidal_Card" EntityType="Self.Mecidal_Card" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Microchip" EntityType="Self.Microchip" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Packaging_Type" EntityType="Self.Packaging_Type" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Payment" EntityType="Self.Payment" Schema="dbo" store:Type="Tables" />
@@ -1132,6 +1264,8 @@
           <EntitySet Name="UserRole" EntityType="Self.UserRole" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Vet_Appointment" EntityType="Self.Vet_Appointment" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Vet_Appointment_Line" EntityType="Self.Vet_Appointment_Line" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Vet_Appointment_Master" EntityType="Self.Vet_Appointment_Master" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="VetAppReasons" EntityType="Self.VetAppReasons" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Veterinarian" EntityType="Self.Veterinarian" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Volunteer" EntityType="Self.Volunteer" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Volunteer_Hours" EntityType="Self.Volunteer_Hours" Schema="dbo" store:Type="Tables" />
@@ -1170,6 +1304,14 @@
           </AssociationSet>
           <AssociationSet Name="fkani" Association="Self.fkani">
             <End Role="Animal_Status" EntitySet="Animal_Status" />
+            <End Role="Animal" EntitySet="Animal" />
+          </AssociationSet>
+          <AssociationSet Name="fkani1" Association="Self.fkani1">
+            <End Role="Animal_Type" EntitySet="Animal_Type" />
+            <End Role="Animal" EntitySet="Animal" />
+          </AssociationSet>
+          <AssociationSet Name="fkani2" Association="Self.fkani2">
+            <End Role="Animal_Breed" EntitySet="Animal_Breed" />
             <End Role="Animal" EntitySet="Animal" />
           </AssociationSet>
           <AssociationSet Name="fkanibreed" Association="Self.fkanibreed">
@@ -1240,6 +1382,10 @@
             <End Role="Employee_Type" EntitySet="Employee_Type" />
             <End Role="Employee" EntitySet="Employee" />
           </AssociationSet>
+          <AssociationSet Name="fkemp2" Association="Self.fkemp2">
+            <End Role="Employee_Status" EntitySet="Employee_Status" />
+            <End Role="Employee" EntitySet="Employee" />
+          </AssociationSet>
           <AssociationSet Name="fkempk" Association="Self.fkempk">
             <End Role="Employee" EntitySet="Employee" />
             <End Role="Emp_Kennel" EntitySet="Emp_Kennel" />
@@ -1267,6 +1413,14 @@
           <AssociationSet Name="fkhoch" Association="Self.fkhoch">
             <End Role="Adoption" EntitySet="Adoption" />
             <End Role="HomeCheck" EntitySet="HomeCheck" />
+          </AssociationSet>
+          <AssociationSet Name="fkmedcard" Association="Self.fkmedcard">
+            <End Role="Animal" EntitySet="Animal" />
+            <End Role="Mecidal_Card" EntitySet="Mecidal_Card" />
+          </AssociationSet>
+          <AssociationSet Name="fkmedcard1" Association="Self.fkmedcard1">
+            <End Role="Vet_Appointment" EntitySet="Vet_Appointment" />
+            <End Role="Mecidal_Card" EntitySet="Mecidal_Card" />
           </AssociationSet>
           <AssociationSet Name="fkmicro" Association="Self.fkmicro">
             <End Role="Animal" EntitySet="Animal" />
@@ -1304,8 +1458,12 @@
             <End Role="Role_" EntitySet="Role_" />
             <End Role="UserRole" EntitySet="UserRole" />
           </AssociationSet>
-          <AssociationSet Name="fkvetap" Association="Self.fkvetap">
-            <End Role="Veterinarian" EntitySet="Veterinarian" />
+          <AssociationSet Name="fkvetap2" Association="Self.fkvetap2">
+            <End Role="Vet_Appointment_Master" EntitySet="Vet_Appointment_Master" />
+            <End Role="Vet_Appointment" EntitySet="Vet_Appointment" />
+          </AssociationSet>
+          <AssociationSet Name="fkvetap3" Association="Self.fkvetap3">
+            <End Role="VetAppReasons" EntitySet="VetAppReasons" />
             <End Role="Vet_Appointment" EntitySet="Vet_Appointment" />
           </AssociationSet>
           <AssociationSet Name="fkvetapl" Association="Self.fkvetapl">
@@ -1315,6 +1473,14 @@
           <AssociationSet Name="fkvetapl1" Association="Self.fkvetapl1">
             <End Role="Vet_Appointment" EntitySet="Vet_Appointment" />
             <End Role="Vet_Appointment_Line" EntitySet="Vet_Appointment_Line" />
+          </AssociationSet>
+          <AssociationSet Name="fkvetapl3" Association="Self.fkvetapl3">
+            <End Role="Veterinarian" EntitySet="Veterinarian" />
+            <End Role="Vet_Appointment_Master" EntitySet="Vet_Appointment_Master" />
+          </AssociationSet>
+          <AssociationSet Name="fkvetreasonl" Association="Self.fkvetreasonl">
+            <End Role="Animal_Type" EntitySet="Animal_Type" />
+            <End Role="VetAppReasons" EntitySet="VetAppReasons" />
           </AssociationSet>
           <AssociationSet Name="fkvol" Association="Self.fkvol">
             <End Role="Title" EntitySet="Title" />
@@ -1443,20 +1609,25 @@
           <Property Name="Animal_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Animal_Image" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="Animal_Name" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="Animal_Type_ID" Type="Int32" />
+          <Property Name="Animal_Breed_ID" Type="Int32" />
           <Property Name="Animal_Description" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
           <Property Name="Animal_Gender" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="Animal_Age" Type="Int32" />
           <Property Name="Animal_Sterilization" Type="Boolean" />
           <Property Name="Animal_Castration" Type="Boolean" />
           <Property Name="Animal_Size" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
-          <Property Name="Animal_Entry_Date" Type="DateTime" Precision="3" />
+          <Property Name="Animal_Entry_Date" Type="DateTime" Precision="0" />
           <Property Name="Animal_Coat" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
           <Property Name="Animal_Status_ID" Type="Int32" />
           <NavigationProperty Name="Adoptions" Relationship="Self.fkadopt" FromRole="Animal" ToRole="Adoption" />
           <NavigationProperty Name="Animal_Status" Relationship="Self.fkani" FromRole="Animal" ToRole="Animal_Status" />
+          <NavigationProperty Name="Animal_Type" Relationship="Self.fkani1" FromRole="Animal" ToRole="Animal_Type" />
+          <NavigationProperty Name="Animal_Breed" Relationship="Self.fkani2" FromRole="Animal" ToRole="Animal_Breed" />
           <NavigationProperty Name="Animal_Kennel_History" Relationship="Self.fkanikh" FromRole="Animal" ToRole="Animal_Kennel_History" />
           <NavigationProperty Name="CrossBreeds" Relationship="Self.fkcrb" FromRole="Animal" ToRole="CrossBreed" />
           <NavigationProperty Name="Foster_Care" Relationship="Self.fkfosc" FromRole="Animal" ToRole="Foster_Care" />
+          <NavigationProperty Name="Mecidal_Card" Relationship="Self.fkmedcard" FromRole="Animal" ToRole="Mecidal_Card" />
           <NavigationProperty Name="Microchips" Relationship="Self.fkmicro" FromRole="Animal" ToRole="Microchip" />
           <NavigationProperty Name="Vet_Appointment_Line" Relationship="Self.fkvetapl" FromRole="Animal" ToRole="Vet_Appointment_Line" />
         </EntityType>
@@ -1468,6 +1639,7 @@
           <Property Name="Animal_Breed_Name" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
           <Property Name="Animal_Breed_Description" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
           <Property Name="Animal_Type_ID" Type="Int32" />
+          <NavigationProperty Name="Animals" Relationship="Self.fkani2" FromRole="Animal_Breed" ToRole="Animal" />
           <NavigationProperty Name="Animal_Type" Relationship="Self.fkanibreed" FromRole="Animal_Breed" ToRole="Animal_Type" />
           <NavigationProperty Name="CrossBreeds" Relationship="Self.fkcrb1" FromRole="Animal_Breed" ToRole="CrossBreed" />
         </EntityType>
@@ -1509,7 +1681,9 @@
           </Key>
           <Property Name="Animal_Type_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Animal_Type_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Animals" Relationship="Self.fkani1" FromRole="Animal_Type" ToRole="Animal" />
           <NavigationProperty Name="Animal_Breed" Relationship="Self.fkanibreed" FromRole="Animal_Type" ToRole="Animal_Breed" />
+          <NavigationProperty Name="VetAppReasons" Relationship="Self.fkvetreasonl" FromRole="Animal_Type" ToRole="VetAppReasons" />
         </EntityType>
         <EntityType Name="Audit_Log">
           <Key>
@@ -1628,9 +1802,11 @@
           <Property Name="Emp_Date_Employed" Type="DateTime" Precision="0" />
           <Property Name="Title_ID" Type="Int32" />
           <Property Name="Emp_Type_ID" Type="Int32" />
+          <Property Name="Employee_Status_ID" Type="Int32" />
           <NavigationProperty Name="Emp_Kennel" Relationship="Self.fkempk" FromRole="Employee" ToRole="Emp_Kennel" />
           <NavigationProperty Name="Title" Relationship="Self.fkemp" FromRole="Employee" ToRole="Title" />
           <NavigationProperty Name="Employee_Type" Relationship="Self.fkemp1" FromRole="Employee" ToRole="Employee_Type" />
+          <NavigationProperty Name="Employee_Status" Relationship="Self.fkemp2" FromRole="Employee" ToRole="Employee_Status" />
           <NavigationProperty Name="TimeSheets" Relationship="Self.fktime" FromRole="Employee" ToRole="TimeSheet" />
           <NavigationProperty Name="User_" Relationship="Self.fkuser" FromRole="Employee" ToRole="User_" />
         </EntityType>
@@ -1640,6 +1816,7 @@
           </Key>
           <Property Name="Employee_Status_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Employee_Status_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Employees" Relationship="Self.fkemp2" FromRole="Employee_Status" ToRole="Employee" />
         </EntityType>
         <EntityType Name="Employee_Type">
           <Key>
@@ -1671,9 +1848,9 @@
             <PropertyRef Name="EventID" />
           </Key>
           <Property Name="EventID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Subject" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Subject" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="Description" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
-          <Property Name="Start" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Start" Type="DateTime" Precision="3" />
           <Property Name="EventEnd" Type="DateTime" Precision="3" />
           <Property Name="ThemeColour" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
           <Property Name="IsFullDay" Type="Boolean" />
@@ -1738,6 +1915,21 @@
           <Property Name="Kennel_Capacity" Type="Int32" />
           <NavigationProperty Name="Animal_Kennel_History" Relationship="Self.fkanikh1" FromRole="Kennel" ToRole="Animal_Kennel_History" />
           <NavigationProperty Name="Emp_Kennel" Relationship="Self.fkempk1" FromRole="Kennel" ToRole="Emp_Kennel" />
+        </EntityType>
+        <EntityType Name="Mecidal_Card">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Animal_ID" Type="Int32" Nullable="false" />
+          <Property Name="Vet_Appointment_ID" Type="Int32" Nullable="false" />
+          <Property Name="Diagnosis_Details" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Arrival_from_Vet" Type="DateTime" Precision="0" />
+          <Property Name="Next_Appointment_Date_" Type="DateTime" Precision="0" />
+          <Property Name="MedicalCard" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Animal_Treatment" Type="Boolean" />
+          <NavigationProperty Name="Animal" Relationship="Self.fkmedcard" FromRole="Mecidal_Card" ToRole="Animal" />
+          <NavigationProperty Name="Vet_Appointment" Relationship="Self.fkmedcard1" FromRole="Mecidal_Card" ToRole="Vet_Appointment" />
         </EntityType>
         <EntityType Name="Microchip">
           <Key>
@@ -1849,8 +2041,9 @@
             <PropertyRef Name="UserID" />
           </Key>
           <Property Name="UserID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Username" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
-          <Property Name="Emp_ID" Type="Int32" />
+          <Property Name="Username" Type="String" MaxLength="150" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Password" Type="String" MaxLength="150" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Emp_ID" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Audit_Log" Relationship="Self.fkaudlog" FromRole="User_" ToRole="Audit_Log" />
           <NavigationProperty Name="Employee" Relationship="Self.fkuser" FromRole="User_" ToRole="Employee" />
           <NavigationProperty Name="UserRoles" Relationship="Self.fkuserol" FromRole="User_" ToRole="UserRole" />
@@ -1870,8 +2063,11 @@
             <PropertyRef Name="Vet_Appointment_ID" />
           </Key>
           <Property Name="Vet_Appointment_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Vet_ID" Type="Int32" />
-          <NavigationProperty Name="Veterinarian" Relationship="Self.fkvetap" FromRole="Vet_Appointment" ToRole="Veterinarian" />
+          <Property Name="Vet_Appoint_Line_ID" Type="Int32" />
+          <Property Name="VetAppReasonsID" Type="Int32" />
+          <NavigationProperty Name="Mecidal_Card" Relationship="Self.fkmedcard1" FromRole="Vet_Appointment" ToRole="Mecidal_Card" />
+          <NavigationProperty Name="Vet_Appointment_Master" Relationship="Self.fkvetap2" FromRole="Vet_Appointment" ToRole="Vet_Appointment_Master" />
+          <NavigationProperty Name="VetAppReason" Relationship="Self.fkvetap3" FromRole="Vet_Appointment" ToRole="VetAppReasons" />
           <NavigationProperty Name="Vet_Appointment_Line" Relationship="Self.fkvetapl1" FromRole="Vet_Appointment" ToRole="Vet_Appointment_Line" />
         </EntityType>
         <EntityType Name="Vet_Appointment_Line">
@@ -1879,12 +2075,33 @@
             <PropertyRef Name="Vet_Appoint_Line_ID" />
           </Key>
           <Property Name="Vet_Appoint_Line_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Vet_Appoint_Line_Status" Type="Int32" />
-          <Property Name="Animal_ID" Type="Int32" />
-          <Property Name="Vet_Appointment_ID" Type="Int32" />
+          <Property Name="Vet_Appoint_Line_Status" Type="Int32" Nullable="false" />
+          <Property Name="Animal_ID" Type="Int32" Nullable="false" />
+          <Property Name="Vet_Appointment_ID" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Animal" Relationship="Self.fkvetapl" FromRole="Vet_Appointment_Line" ToRole="Animal" />
           <NavigationProperty Name="Capture_Medical_Card" Relationship="Self.fkcapmed" FromRole="Vet_Appointment_Line" ToRole="Capture_Medical_Card" />
           <NavigationProperty Name="Vet_Appointment" Relationship="Self.fkvetapl1" FromRole="Vet_Appointment_Line" ToRole="Vet_Appointment" />
+        </EntityType>
+        <EntityType Name="Vet_Appointment_Master">
+          <Key>
+            <PropertyRef Name="Vet_Appoint_Line_ID" />
+          </Key>
+          <Property Name="Vet_Appoint_Line_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Vet_ID" Type="Int32" Nullable="false" />
+          <Property Name="Appointment_Date" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Description" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Vet_Appointment" Relationship="Self.fkvetap2" FromRole="Vet_Appointment_Master" ToRole="Vet_Appointment" />
+          <NavigationProperty Name="Veterinarian" Relationship="Self.fkvetapl3" FromRole="Vet_Appointment_Master" ToRole="Veterinarian" />
+        </EntityType>
+        <EntityType Name="VetAppReason">
+          <Key>
+            <PropertyRef Name="VetAppReasonsID" />
+          </Key>
+          <Property Name="VetAppReasonsID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Animal_Type_ID" Type="Int32" />
+          <Property Name="Reason" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Animal_Type" Relationship="Self.fkvetreasonl" FromRole="VetAppReasons" ToRole="Animal_Type" />
+          <NavigationProperty Name="Vet_Appointment" Relationship="Self.fkvetap3" FromRole="VetAppReasons" ToRole="Vet_Appointment" />
         </EntityType>
         <EntityType Name="Veterinarian">
           <Key>
@@ -1895,7 +2112,7 @@
           <Property Name="Vet_Emial" Type="String" MaxLength="254" FixedLength="false" Unicode="true" />
           <Property Name="Vet_Tel" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
           <Property Name="Vet_Address" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="Vet_Appointment" Relationship="Self.fkvetap" FromRole="Veterinarian" ToRole="Vet_Appointment" />
+          <NavigationProperty Name="Vet_Appointment_Master" Relationship="Self.fkvetapl3" FromRole="Veterinarian" ToRole="Vet_Appointment_Master" />
         </EntityType>
         <EntityType Name="Volunteer">
           <Key>
@@ -2067,6 +2284,30 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="fkani1">
+          <End Role="Animal_Type" Type="Self.Animal_Type" Multiplicity="0..1" />
+          <End Role="Animal" Type="Self.Animal" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Animal_Type">
+              <PropertyRef Name="Animal_Type_ID" />
+            </Principal>
+            <Dependent Role="Animal">
+              <PropertyRef Name="Animal_Type_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fkani2">
+          <End Role="Animal_Breed" Type="Self.Animal_Breed" Multiplicity="0..1" />
+          <End Role="Animal" Type="Self.Animal" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Animal_Breed">
+              <PropertyRef Name="Animal_Breed_ID" />
+            </Principal>
+            <Dependent Role="Animal">
+              <PropertyRef Name="Animal_Breed_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="fkanikh">
           <End Role="Animal" Type="Self.Animal" Multiplicity="0..1" />
           <End Role="Animal_Kennel_History" Type="Self.Animal_Kennel_History" Multiplicity="*" />
@@ -2103,6 +2344,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="fkmedcard">
+          <End Role="Animal" Type="Self.Animal" Multiplicity="1" />
+          <End Role="Mecidal_Card" Type="Self.Mecidal_Card" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Animal">
+              <PropertyRef Name="Animal_ID" />
+            </Principal>
+            <Dependent Role="Mecidal_Card">
+              <PropertyRef Name="Animal_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="fkmicro">
           <End Role="Animal" Type="Self.Animal" Multiplicity="0..1" />
           <End Role="Microchip" Type="Self.Microchip" Multiplicity="*" />
@@ -2116,7 +2369,7 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="fkvetapl">
-          <End Role="Animal" Type="Self.Animal" Multiplicity="0..1" />
+          <End Role="Animal" Type="Self.Animal" Multiplicity="1" />
           <End Role="Vet_Appointment_Line" Type="Self.Vet_Appointment_Line" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Animal">
@@ -2172,6 +2425,18 @@
             </Principal>
             <Dependent Role="Animal_Treatment">
               <PropertyRef Name="Capture_Medical_Card_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fkvetreasonl">
+          <End Role="Animal_Type" Type="Self.Animal_Type" Multiplicity="0..1" />
+          <End Role="VetAppReasons" Type="Self.VetAppReason" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Animal_Type">
+              <PropertyRef Name="Animal_Type_ID" />
+            </Principal>
+            <Dependent Role="VetAppReasons">
+              <PropertyRef Name="Animal_Type_ID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -2331,6 +2596,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="fkemp2">
+          <End Role="Employee_Status" Type="Self.Employee_Status" Multiplicity="0..1" />
+          <End Role="Employee" Type="Self.Employee" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employee_Status">
+              <PropertyRef Name="Employee_Status_ID" />
+            </Principal>
+            <Dependent Role="Employee">
+              <PropertyRef Name="Employee_Status_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="fktime">
           <End Role="Employee" Type="Self.Employee" Multiplicity="0..1" />
           <End Role="TimeSheet" Type="Self.TimeSheet" Multiplicity="*" />
@@ -2344,7 +2621,7 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="fkuser">
-          <End Role="Employee" Type="Self.Employee" Multiplicity="0..1" />
+          <End Role="Employee" Type="Self.Employee" Multiplicity="1" />
           <End Role="User_" Type="Self.User_" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Employee">
@@ -2376,6 +2653,18 @@
             </Principal>
             <Dependent Role="Foster_Care">
               <PropertyRef Name="Foster_Parent_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fkmedcard1">
+          <End Role="Vet_Appointment" Type="Self.Vet_Appointment" Multiplicity="1" />
+          <End Role="Mecidal_Card" Type="Self.Mecidal_Card" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Vet_Appointment">
+              <PropertyRef Name="Vet_Appointment_ID" />
+            </Principal>
+            <Dependent Role="Mecidal_Card">
+              <PropertyRef Name="Vet_Appointment_ID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -2463,20 +2752,32 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="fkvetap">
-          <End Role="Veterinarian" Type="Self.Veterinarian" Multiplicity="0..1" />
+        <Association Name="fkvetap2">
+          <End Role="Vet_Appointment_Master" Type="Self.Vet_Appointment_Master" Multiplicity="0..1" />
           <End Role="Vet_Appointment" Type="Self.Vet_Appointment" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="Veterinarian">
-              <PropertyRef Name="Vet_ID" />
+            <Principal Role="Vet_Appointment_Master">
+              <PropertyRef Name="Vet_Appoint_Line_ID" />
             </Principal>
             <Dependent Role="Vet_Appointment">
-              <PropertyRef Name="Vet_ID" />
+              <PropertyRef Name="Vet_Appoint_Line_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fkvetap3">
+          <End Role="VetAppReasons" Type="Self.VetAppReason" Multiplicity="0..1" />
+          <End Role="Vet_Appointment" Type="Self.Vet_Appointment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="VetAppReasons">
+              <PropertyRef Name="VetAppReasonsID" />
+            </Principal>
+            <Dependent Role="Vet_Appointment">
+              <PropertyRef Name="VetAppReasonsID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
         <Association Name="fkvetapl1">
-          <End Role="Vet_Appointment" Type="Self.Vet_Appointment" Multiplicity="0..1" />
+          <End Role="Vet_Appointment" Type="Self.Vet_Appointment" Multiplicity="1" />
           <End Role="Vet_Appointment_Line" Type="Self.Vet_Appointment_Line" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Vet_Appointment">
@@ -2484,6 +2785,18 @@
             </Principal>
             <Dependent Role="Vet_Appointment_Line">
               <PropertyRef Name="Vet_Appointment_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fkvetapl3">
+          <End Role="Veterinarian" Type="Self.Veterinarian" Multiplicity="1" />
+          <End Role="Vet_Appointment_Master" Type="Self.Vet_Appointment_Master" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Veterinarian">
+              <PropertyRef Name="Vet_ID" />
+            </Principal>
+            <Dependent Role="Vet_Appointment_Master">
+              <PropertyRef Name="Vet_ID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -2543,6 +2856,7 @@
           <EntitySet Name="Foster_Care_Parent" EntityType="Self.Foster_Care_Parent" />
           <EntitySet Name="HomeChecks" EntityType="Self.HomeCheck" />
           <EntitySet Name="Kennels" EntityType="Self.Kennel" />
+          <EntitySet Name="Mecidal_Card" EntityType="Self.Mecidal_Card" />
           <EntitySet Name="Microchips" EntityType="Self.Microchip" />
           <EntitySet Name="Packaging_Type" EntityType="Self.Packaging_Type" />
           <EntitySet Name="Payments" EntityType="Self.Payment" />
@@ -2557,6 +2871,8 @@
           <EntitySet Name="UserRoles" EntityType="Self.UserRole" />
           <EntitySet Name="Vet_Appointment" EntityType="Self.Vet_Appointment" />
           <EntitySet Name="Vet_Appointment_Line" EntityType="Self.Vet_Appointment_Line" />
+          <EntitySet Name="Vet_Appointment_Master" EntityType="Self.Vet_Appointment_Master" />
+          <EntitySet Name="VetAppReasons" EntityType="Self.VetAppReason" />
           <EntitySet Name="Veterinarians" EntityType="Self.Veterinarian" />
           <EntitySet Name="Volunteers" EntityType="Self.Volunteer" />
           <EntitySet Name="Volunteer_Hours" EntityType="Self.Volunteer_Hours" />
@@ -2605,6 +2921,14 @@
             <End Role="Animal_Status" EntitySet="Animal_Status" />
             <End Role="Animal" EntitySet="Animals" />
           </AssociationSet>
+          <AssociationSet Name="fkani1" Association="Self.fkani1">
+            <End Role="Animal_Type" EntitySet="Animal_Type" />
+            <End Role="Animal" EntitySet="Animals" />
+          </AssociationSet>
+          <AssociationSet Name="fkani2" Association="Self.fkani2">
+            <End Role="Animal_Breed" EntitySet="Animal_Breed" />
+            <End Role="Animal" EntitySet="Animals" />
+          </AssociationSet>
           <AssociationSet Name="fkanikh" Association="Self.fkanikh">
             <End Role="Animal" EntitySet="Animals" />
             <End Role="Animal_Kennel_History" EntitySet="Animal_Kennel_History" />
@@ -2616,6 +2940,10 @@
           <AssociationSet Name="fkfosc" Association="Self.fkfosc">
             <End Role="Animal" EntitySet="Animals" />
             <End Role="Foster_Care" EntitySet="Foster_Care" />
+          </AssociationSet>
+          <AssociationSet Name="fkmedcard" Association="Self.fkmedcard">
+            <End Role="Animal" EntitySet="Animals" />
+            <End Role="Mecidal_Card" EntitySet="Mecidal_Card" />
           </AssociationSet>
           <AssociationSet Name="fkmicro" Association="Self.fkmicro">
             <End Role="Animal" EntitySet="Animals" />
@@ -2640,6 +2968,10 @@
           <AssociationSet Name="fkanitreat" Association="Self.fkanitreat">
             <End Role="Capture_Medical_Card" EntitySet="Capture_Medical_Card" />
             <End Role="Animal_Treatment" EntitySet="Animal_Treatment" />
+          </AssociationSet>
+          <AssociationSet Name="fkvetreasonl" Association="Self.fkvetreasonl">
+            <End Role="Animal_Type" EntitySet="Animal_Type" />
+            <End Role="VetAppReasons" EntitySet="VetAppReasons" />
           </AssociationSet>
           <AssociationSet Name="fkaudlog" Association="Self.fkaudlog">
             <End Role="User_" EntitySet="User_" />
@@ -2693,6 +3025,10 @@
             <End Role="Employee_Type" EntitySet="Employee_Type" />
             <End Role="Employee" EntitySet="Employees" />
           </AssociationSet>
+          <AssociationSet Name="fkemp2" Association="Self.fkemp2">
+            <End Role="Employee_Status" EntitySet="Employee_Status" />
+            <End Role="Employee" EntitySet="Employees" />
+          </AssociationSet>
           <AssociationSet Name="fktime" Association="Self.fktime">
             <End Role="Employee" EntitySet="Employees" />
             <End Role="TimeSheet" EntitySet="TimeSheets" />
@@ -2708,6 +3044,10 @@
           <AssociationSet Name="fkfosc1" Association="Self.fkfosc1">
             <End Role="Foster_Care_Parent" EntitySet="Foster_Care_Parent" />
             <End Role="Foster_Care" EntitySet="Foster_Care" />
+          </AssociationSet>
+          <AssociationSet Name="fkmedcard1" Association="Self.fkmedcard1">
+            <End Role="Vet_Appointment" EntitySet="Vet_Appointment" />
+            <End Role="Mecidal_Card" EntitySet="Mecidal_Card" />
           </AssociationSet>
           <AssociationSet Name="fkstock1" Association="Self.fkstock1">
             <End Role="Packaging_Type" EntitySet="Packaging_Type" />
@@ -2737,13 +3077,21 @@
             <End Role="User_" EntitySet="User_" />
             <End Role="UserRole" EntitySet="UserRoles" />
           </AssociationSet>
-          <AssociationSet Name="fkvetap" Association="Self.fkvetap">
-            <End Role="Veterinarian" EntitySet="Veterinarians" />
+          <AssociationSet Name="fkvetap2" Association="Self.fkvetap2">
+            <End Role="Vet_Appointment_Master" EntitySet="Vet_Appointment_Master" />
+            <End Role="Vet_Appointment" EntitySet="Vet_Appointment" />
+          </AssociationSet>
+          <AssociationSet Name="fkvetap3" Association="Self.fkvetap3">
+            <End Role="VetAppReasons" EntitySet="VetAppReasons" />
             <End Role="Vet_Appointment" EntitySet="Vet_Appointment" />
           </AssociationSet>
           <AssociationSet Name="fkvetapl1" Association="Self.fkvetapl1">
             <End Role="Vet_Appointment" EntitySet="Vet_Appointment" />
             <End Role="Vet_Appointment_Line" EntitySet="Vet_Appointment_Line" />
+          </AssociationSet>
+          <AssociationSet Name="fkvetapl3" Association="Self.fkvetapl3">
+            <End Role="Veterinarian" EntitySet="Veterinarians" />
+            <End Role="Vet_Appointment_Master" EntitySet="Vet_Appointment_Master" />
           </AssociationSet>
           <AssociationSet Name="fkvolhrs" Association="Self.fkvolhrs">
             <End Role="Volunteer" EntitySet="Volunteers" />
@@ -2859,6 +3207,8 @@
                 <ScalarProperty Name="Animal_ID" ColumnName="Animal_ID" />
                 <ScalarProperty Name="Animal_Image" ColumnName="Animal_Image" />
                 <ScalarProperty Name="Animal_Name" ColumnName="Animal_Name" />
+                <ScalarProperty Name="Animal_Type_ID" ColumnName="Animal_Type_ID" />
+                <ScalarProperty Name="Animal_Breed_ID" ColumnName="Animal_Breed_ID" />
                 <ScalarProperty Name="Animal_Description" ColumnName="Animal_Description" />
                 <ScalarProperty Name="Animal_Gender" ColumnName="Animal_Gender" />
                 <ScalarProperty Name="Animal_Age" ColumnName="Animal_Age" />
@@ -3028,6 +3378,7 @@
                 <ScalarProperty Name="Emp_Date_Employed" ColumnName="Emp_Date_Employed" />
                 <ScalarProperty Name="Title_ID" ColumnName="Title_ID" />
                 <ScalarProperty Name="Emp_Type_ID" ColumnName="Emp_Type_ID" />
+                <ScalarProperty Name="Employee_Status_ID" ColumnName="Employee_Status_ID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -3134,6 +3485,20 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="Mecidal_Card">
+            <EntityTypeMapping TypeName="Wollies_ShelterModel.Mecidal_Card">
+              <MappingFragment StoreEntitySet="Mecidal_Card">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Animal_ID" ColumnName="Animal_ID" />
+                <ScalarProperty Name="Vet_Appointment_ID" ColumnName="Vet_Appointment_ID" />
+                <ScalarProperty Name="Diagnosis_Details" ColumnName="Diagnosis Details" />
+                <ScalarProperty Name="Arrival_from_Vet" ColumnName="Arrival from Vet" />
+                <ScalarProperty Name="Next_Appointment_Date_" ColumnName="Next Appointment Date " />
+                <ScalarProperty Name="MedicalCard" ColumnName="MedicalCard" />
+                <ScalarProperty Name="Animal_Treatment" ColumnName="Animal Treatment" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="Microchips">
             <EntityTypeMapping TypeName="Wollies_ShelterModel.Microchip">
               <MappingFragment StoreEntitySet="Microchip">
@@ -3236,6 +3601,7 @@
               <MappingFragment StoreEntitySet="User_">
                 <ScalarProperty Name="UserID" ColumnName="UserID" />
                 <ScalarProperty Name="Username" ColumnName="Username" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
                 <ScalarProperty Name="Emp_ID" ColumnName="Emp_ID" />
               </MappingFragment>
             </EntityTypeMapping>
@@ -3253,7 +3619,8 @@
             <EntityTypeMapping TypeName="Wollies_ShelterModel.Vet_Appointment">
               <MappingFragment StoreEntitySet="Vet_Appointment">
                 <ScalarProperty Name="Vet_Appointment_ID" ColumnName="Vet_Appointment_ID" />
-                <ScalarProperty Name="Vet_ID" ColumnName="Vet_ID" />
+                <ScalarProperty Name="Vet_Appoint_Line_ID" ColumnName="Vet_Appoint_Line_ID" />
+                <ScalarProperty Name="VetAppReasonsID" ColumnName="VetAppReasonsID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -3264,6 +3631,25 @@
                 <ScalarProperty Name="Vet_Appoint_Line_Status" ColumnName="Vet_Appoint_Line_Status" />
                 <ScalarProperty Name="Animal_ID" ColumnName="Animal_ID" />
                 <ScalarProperty Name="Vet_Appointment_ID" ColumnName="Vet_Appointment_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Vet_Appointment_Master">
+            <EntityTypeMapping TypeName="Wollies_ShelterModel.Vet_Appointment_Master">
+              <MappingFragment StoreEntitySet="Vet_Appointment_Master">
+                <ScalarProperty Name="Vet_Appoint_Line_ID" ColumnName="Vet_Appoint_Line_ID" />
+                <ScalarProperty Name="Vet_ID" ColumnName="Vet_ID" />
+                <ScalarProperty Name="Appointment_Date" ColumnName="Appointment Date" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="VetAppReasons">
+            <EntityTypeMapping TypeName="Wollies_ShelterModel.VetAppReason">
+              <MappingFragment StoreEntitySet="VetAppReasons">
+                <ScalarProperty Name="VetAppReasonsID" ColumnName="VetAppReasonsID" />
+                <ScalarProperty Name="Animal_Type_ID" ColumnName="Animal_Type_ID" />
+                <ScalarProperty Name="Reason" ColumnName="Reason" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
