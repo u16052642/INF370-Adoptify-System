@@ -1,11 +1,11 @@
-﻿
+﻿@model AdoptifySystem.Models.nickeymodel.Flexible
 @{
     ViewBag.Title = "AddDonation";
 }
 <style>
     /*this is the begin of the CUSTOMIZED CHECKBOXES*/
     /* The container */
-    .container {
+    /*.container {
         display: block;
         position: relative;
         padding-left: 35px;
@@ -16,7 +16,7 @@
         -moz-user-select: none;
         -ms-user-select: none;
         user-select: none;
-    }
+        }*/
 
     /* Hide the browser's default checkbox */
     /*.container input {
@@ -28,39 +28,39 @@
                                 }*/
 
     /* Create a custom checkbox */
-    .checkmark {
+    /*.checkmark {
         position: absolute;
         top: 0;
         left: 0;
         height: 25px;
         width: 25px;
         background-color: #eee;
-    }
+        }*/
 
     /* On mouse-over, add a grey background color */
-    .container:hover input ~ .checkmark {
+    /*.container:hover input ~ .checkmark {
         background-color: #ccc;
-    }
+        }*/
 
     /* When the checkbox is checked, add a blue background */
-    .container input:checked ~ .checkmark {
+    /*.container input:checked ~ .checkmark {
         background-color: #2196F3;
-    }
+        }*/
 
     /* Create the checkmark/indicator (hidden when not checked) */
-    .checkmark:after {
+    /*.checkmark:after {
         content: "";
         position: absolute;
         display: none;
-    }
+        }*/
 
     /* Show the checkmark when checked */
-    .container input:checked ~ .checkmark:after {
+    /*.container input:checked ~ .checkmark:after {
         display: block;
-    }
+        }*/
 
     /* Style the checkmark/indicator */
-    .container .checkmark:after {
+    /*.container .checkmark:after {
         left: 9px;
         top: 5px;
         width: 5px;
@@ -70,27 +70,27 @@
         -webkit-transform: rotate(45deg);
         -ms-transform: rotate(45deg);
         transform: rotate(45deg);
-    }
+        }*/
     /*this is the end of the CUSTOMIZED CHECKBOXES*/
 
     /*this is the begin of the FILTERDROPDOWN BOX*/
     /* Dropdown Button */
-    .dropbtn {
+    /*.dropbtn {
         background-color: #4CAF50;
         color: white;
         padding: 16px;
         font-size: 16px;
         border: none;
         cursor: pointer;
-    }
+        }*/
 
         /* Dropdown button on hover & focus */
-        .dropbtn:hover, .dropbtn:focus {
+    /*.dropbtn:hover, .dropbtn:focus {
             background-color: #3e8e41;
-        }
+            }*/
 
     /* The search field */
-    #myInput {
+    /*#myInput {
         box-sizing: border-box;
         background-image: url('searchicon.png');
         background-position: 14px 12px;
@@ -99,178 +99,194 @@
         padding: 14px 20px 12px 45px;
         border: none;
         border-bottom: 1px solid #ddd;
-    }
+        }*/
 
         /* The search field when it gets focus/clicked on */
-        #myInput:focus {
+    /*#myInput:focus {
             outline: 3px solid #ddd;
-        }
+            }*/
 
     /* The container <div> - needed to position the dropdown content */
-    .dropdown {
+    /*.dropdown {
         position: relative;
         display: inline-block;
-    }
+        }*/
 
     /* Dropdown Content (Hidden by Default) */
-    .dropdown-content {
+    /*.dropdown-content {
         display: none;
         position: absolute;
         background-color: #f6f6f6;
         min-width: 230px;
         border: 1px solid #ddd;
         z-index: 1;
-    }
+        }*/
 
         /* Links inside the dropdown */
-        .dropdown-content a {
+    /*.dropdown-content a {
             color: black;
             padding: 12px 16px;
             text-decoration: none;
             display: block;
-        }
+            }*/
 
             /* Change color of dropdown links on hover */
-            .dropdown-content a:hover {
+    /*.dropdown-content a:hover {
                 background-color: #f1f1f1
-            }
+                }*/
 
     /* Show the dropdown menu (use JS to add this class to the .dropdown-content container when the user clicks on the dropdown button) */
-    .show {
+    /*.show {
         display: block;
-    }
+        }*/
     /*this is the end of the FILTERDROPDOWN BOX*/
-
     .row {
-        display: table;
-        width: 100%;
+        display: flex;
     }
 
     .column {
-        float: left;
-        width: 50%;
-        display: table-cell;
-        height: 357.361px;
+        flex: 50%;
     }
 </style>
 
 @*https://www.youtube.com/watch?v=hKulrfOP_HI got this code from youtube video*@
-@using (Html.BeginForm("Adddonation", "Donation", "Post"))
-{
-
 
         <div class="form-group">
             <h1 class="center-align">@ViewBag.Title</h1>
         </div>
         <br>
-        <form class="form-group">
+@using (Html.BeginForm("Addmoneytolist", "Donations"))
+{
+    <div class="row">
+        <div class="col">
             <div>
                 <h3 class="center-align">Select Donor:</h3>
             </div>
             <br>
             <div>
-                <input class="form-control" type="text" placeholder="Search Donor" />
+                <input class="form-control" name="Donor_ID" type="text" placeholder="Search Donor" />
             </div>
-            <button class="btn btn-lg btn-success">
-                Add Donor
+            <button class="btn btn-lg btn-primary">
+                Select Donor
             </button>
-        </form>
+        </div>
+        <div class="col">
+            <h3>Current Donor:</h3>
+            @*@foreach (var item in Model)
+                {*@
+            <label>Donor Name:</label>
+            <br />
+            <label>Donor Surname:</label>
+            @*}*@
+        </div>
+    </div>
+    <div id="typeofdonation">
         <div>
-            <div>
                 <h3 class=" center-align">Select type of Donation:</h3>
             </div>
             <br>
 
-            <section>
-                <label class="container">
+        <div class="form-check">
+            <input class="form-check-input" type="checkbox" id="gridCheck1" name="checkeds">
+            <label class="form-check-label" for="gridCheck1">
                     Stock
-                    <input class="form-control" type="checkbox" checked="checked" />
-                    <span class="checkmark"></span>
                 </label>
-            </section>
-            <section>
-                <label class="container">
-                    Cash
-                    <input class="form-control" type="checkbox" checked="checked" />
-                    <span class="checkmark"></span>
+        </div>
+        <div class="form-check">
+            <input class="form-check-input" type="checkbox" id="gridCheck1"  name="checkeds" onclick="myFunction()" checked>
+            <label class="form-check-label" for="gridCheck1">
+                Money
                 </label>
-            </section>
+        </div>
         </div>
         <div>
-            <div class="row">
-                <div class="column" style="border:5px solid black;">
-                    <!--style="background-color: salmon;"-->
+        <div class="row" style="width:100%;">
+
+            <div class="column" style="border:1px solid black;">
                     <div class="form-header">
                         <h1 class="center-align">Enter Stock Details</h1>
                     </div>
-                    <div class="example-form">
-                        <div class="dropdown">
-                            <button onclick="myFunction()" class="dropbtn">Select Stock</button> @*https://www.w3schools.com/howto/howto_js_filter_dropdown.asp this is code for dropdown list*@
-                            <div id="myDropdown" class="dropdown-content">
-                                <input class="form-control" type="text" placeholder="Search.." id="myInput" onkeyup="filterFunction()" />
-                                <a href="#about">About</a>
-                                <a href="#base">Base</a>
-                                <a href="#blog">Blog</a>
-                                <a href="#contact">Contact</a>
-                                <a href="#custom">Custom</a>
-                                <a href="#support">Support</a>
-                                <a href="#tools">Tools</a>
-                            </div>
-                        </div>
-                        @*<button>Add Stock</button>*@
-                    </div>
                     <br>
+
+
+                <div id="AddtheStock">
+                    <datalist name="option" id="exampleList">
+
+                        @foreach (var item in Model.Stocklist)
+                        {
+                            <option value="@item.Stock_Type.Stock_Type_Name">
+                        Packaging:@item.Packaging_Type.Packaging_Type_Name
+                        Units: @item.Unit_Type.Unit_Type_Name</option>
+                         <input id="@item.Stock_ID" name="Stock_ID" value="@item.Stock_ID" hidden />
+                        }
+                    </datalist>
+                    <label>Select the Stock</label><br />
+                    <input id="text" type="text" class="form-control" name="example" list="exampleList" onchange="Copy()" />
+                    <input id="hide" name="id" hidden />
+                </div>
+
                     <div class="form-group">
                         <div class="width">
-                            <label>Enter Quantity</label>
-                            <input class="form-control" type="text" placeholder="Enter Quantity" required>
+                        <label>Enter Quantity</label><br />
+                        <input class="form-control" type="text" name="Donation_Quantity" placeholder="Enter Quantity" >
                         </div>
                     </div>
                  
                 </div>
-                <div class="column" style="border:5px solid black;">
-                    <!--style="background-color:skyblue;"-->
+            
+            <div id="addmoney" class="column" style="border:1px solid black;">
                     <div class="form-header">
                         <h1 class="center-align">Money</h1>
                     </div>
                     <div class="form-group">
                         <div class="width">
-                            <label>Enter Amount</label>
-                            <input class="form-control" type="text" placeholder="Enter Quantity" required>
+                        <label>Enter Amount</label><br />
+                        <input class="form-control" type="text" name="Donation_Quantity" placeholder="Enter Quantity">
+                    </div>
                         </div>
                     </div>
+
                 </div>
                 <div class="row">
-                        <div class="col" style="border-right: 1px solid royalblue; text-align: center; width: 50%; float:left;">
-                            <button class="btn btn-info">Add Stock</button>
+            <div class="col" style="text-align: center; width: 50%; float:left;">
+                <button name="button" value="Add Stock" class="btn btn-info">Add Stock</button>
                         </div>
                         <div class="col" style="text-align: center; width: 50%; float:right;">
-                            <button class="btn btn-info">Add Money</button>
-                        </div>
+                <button name="button" value="Add Money" class="btn btn-info">Add Money</button>
                     </div>
             </div>
-
             <br>
             <div>
                 <div class="table">
                     <div class="form-header">
-                        <h1 class="center-align">Current Donation</h1>
+                    <h1 class="center-align">Current Donations</h1>
                     </div>
+
                     <table>
-                        <thead>this is the header of table</thead>
-                        <tbody>this is where the rows will come</tbody>
-                        <tfoot>ths is where the footer of table will appear</tfoot>
+                    <thead><tr>
+                        <td>This is where the head will go</td></tr></thead>
+                    <tbody>
+                        @if (Model.adddonationlist != null)
+                        {
+                            <tr><td>this is where the rows will come</td></tr>
+                        }
+                        else
+                        {
+                            <tr>empty</tr>
+                        }
+                    </tbody>
+                    <tfoot><tr><td> ths is where the footer of table will appear</td></tr></tfoot>
+
                     </table>
+
+
                 </div>
             </div>
             <div class="form-group">
                 <div class="col-xs-12">
                     <br>
-                    <button class="btn btn-lg btn-success pull-right" type="submit">
-                        <i class="glyphicon glyphicon-floppy-disk"
-                           title="Update the New Details"></i> Save
-                    </button>
-                    <button class="btn btn-lg btn-primary pull-left" type="submit"><i class="glyphicon glyphicon-remove-sign"></i> Cancel</button>
+                <button name="button" value="Save" class="btn btn-lg btn-success pull-right" type="submit">Save</button>
+                <button name="button" value="Cancel" class="btn btn-lg btn-primary pull-left" type="submit">Cancel</button>
                 </div>
             </div>
 
@@ -278,7 +294,7 @@
 
         </div>
         }
-        <a class=" btn btn-success" data-toggle="modal" data-target=""><span class="glyphicon glyphicon-eye-open"></span></a>
+@*<a class=" btn btn-success" data-toggle="modal" data-target=""><span class="glyphicon glyphicon-eye-open"></span></a>
         <div class="modal fade bootstrapmodal">
             <div class="modal-dialog">
 
@@ -304,9 +320,9 @@
 
             </div>
 
-        </div>
+    </div>*@
 
-        <script>
+@*<script>
             /*this is the begin of the FILTERDROPDOWN BOX*/
             /* When the user clicks on the button,
             toggle between hiding and showing the dropdown content */
@@ -333,5 +349,15 @@
 
 
 
-        </script>
+    </script>*@
+<script>
 
+    function myFunction() {
+  var x = document.getElementById("addmoney");
+  if (x.style.display === "none") {
+    x.style.display = "block";
+  } else {
+    x.style.display = "none";
+  }
+}
+        </script>

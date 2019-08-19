@@ -1,7 +1,13 @@
-﻿@model AdoptifySystem.Models.User_
+﻿@model AdoptifySystem.User_
 
-<div class="login">
+@{
+    ViewBag.Title = "Login";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="login jumbotron container col-lg-4 ">
     <h1>Login</h1>
+    <h4>@ViewBag.Password</h4>
+ <div class="theform container">
     @using (Html.BeginForm())
     {
         <div>@ViewBag.Message</div>
@@ -13,8 +19,10 @@
             <label for="Password">Password : </label>
             @Html.TextBoxFor(a => a.Password, new { @class = "form-control textbox", type = "password" })
         </div>
+        <a>@Html.ActionLink("Forgot Password", "ResetPassword", "Admin")</a>
         <input type="submit" value="Login" class="btn btn-primary btn-block btn-large" />
     }
+  </div>
 </div>
 
 <style>
@@ -113,7 +121,7 @@
         display: block;
     }
 
-    * {
+    .login{
         -webkit-box-sizing: border-box;
         -moz-box-sizing: border-box;
         -ms-box-sizing: border-box;
@@ -124,10 +132,16 @@
     html {
         width: 100%;
         height: 100%;
-        overflow: hidden;
+        /*overflow: hidden;*/
     }
 
-    body {
+    .login{
+        border: 1px solid;
+        padding: 10px;
+        box-shadow: 5px 10px #888888;
+    }
+
+    .login {
         width: 100%;
         height: 100%;
         font-family: 'Open Sans', sans-serif;
@@ -140,14 +154,14 @@
         filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#3E1D6D', endColorstr='#092756',GradientType=1 );
     }
 
-    .login {
-        position: absolute;
+    /*.login {
+        position: initial;
         top: 50%;
         left: 50%;
         margin: -150px 0 0 -150px;
         width: 300px;
         height: 300px;
-    }
+    }*/
 
         .login h1 {
             color: #fff;
